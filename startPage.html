@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Start Page</title>
+        <style>
+            body {
+                margin: 0;
+                text-align: center;
+                background: #e7d1b8;
+            }
+            .task-bar {
+                display: flex;
+                list-style-type: none;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgb(32, 161, 149);  
+                padding: 0px;
+                margin: 0px;
+                position: fixed;
+                width: 100%;
+            }
+            .task-bar .logo {
+                width: 80px;  
+                height: 80px;  
+            }
+            .task-bar .button {
+                color: #e7d1b8;
+                text-decoration: none;
+                font-size: 25px;
+                border: none;
+                background: none;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                cursor: pointer;
+                font-size: 25px;
+            }
+            @media (max-width: 600px) {
+                .task-bar .button {
+                    font-size: 18px; 
+                }
+            }
+
+            .task-bar .button::before {
+                margin-left: auto;
+            }
+
+            .task-bar .button::after, .task-bar .button::before {
+                content: '';
+                width: 0%;
+                height: 2px;
+                background: #e4d1bb;
+                display: block;
+                transition: 0.5s;
+            }
+
+            .task-bar .button:hover::after, .task-bar .button:hover::before {
+                width: 100%;
+            }
+            .task-bar .button:visited {
+                color: #e7d1b8;
+            }
+            .task-bar ul {
+                display: flex;
+                list-style-type: none;
+                justify-content: center;
+                align-items: center;
+                padding: 0px;
+                margin: 0px;
+                width: 100%;
+                position: absolute;
+            }
+            .task-bar a {
+                text-decoration: none;
+            }
+            .task-bar li {
+                float: left;
+                margin: 0px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="task-bar">
+                <img class="logo" src="UnxNoBG.png" alt="Logo">
+                <ul>
+                    <li><a class="button" href="startPage.html">Home</a></li>
+                    <li><a class="button" href="startPage.html">Visualiser</a></li>             
+                </ul>  
+        </div>
+    </body>
+</html>
