@@ -5,6 +5,7 @@ body {
 }
 
 .navBar {
+    z-index: 2;
     display: flex;
     list-style-type: none;
     justify-content: space-between;

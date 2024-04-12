@@ -1,4 +1,5 @@
 .optionsSection {
+    z-index: 1;
     font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     justify-content: center;
     margin-top: auto;
     padding: 10px;
+    padding-top: 80px;
     min-height: 100vh;
 }
 
@@ -88,8 +90,7 @@
     min-width: 90%;
     grid-gap: 10px;
 }
-
-#criteria li {
+.exclusiveSingleOption {
     max-width: 90%;
     max-height: 90%;
     align-content: left;
@@ -100,12 +101,12 @@
     color: rgb(45, 35, 104);
 }
 
-#criteria li:hover {
+.exclusiveSingleOption:hover {
     transform: scale(1.1);
     transition-duration: 0.3s;
 }
 
-input[name="criterion"]:not(checked)::before {
+.exclusiveOptions input[type="radio"]:not(checked)::before {
     content: "";
     display: inline-block;
     position: relative;
@@ -118,7 +119,7 @@ input[name="criterion"]:not(checked)::before {
     background-color: rgb(255, 255, 255);
 }
 
-input[name="criterion"]:checked::before {
+.exclusiveOptions input[type="radio"]:checked::before {
     content: "";
     display: inline-block;
     position: relative;
@@ -130,4 +131,27 @@ input[name="criterion"]:checked::before {
     border-radius: 50%;
     background-color: rgb(32, 161, 149);
     transition-duration: 0.05s;
+}
+
+#whichCounties {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+#counties {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+    border: 2px solid rgb(45, 35, 104);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#counties li {
+    text-align: left;
 }
