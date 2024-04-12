@@ -77,6 +77,61 @@
                 float: left;
                 margin: 0px 10px;
             }
+            .titleBox {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: auto;
+                padding: 10px;
+                min-height: 100vh;  
+            }
+            .titleBox .logo {
+                width: 600px;
+                height: 600px;
+            }
+            .titleBox p {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                color: rgb(32, 161, 149);
+                font-size: 1.2rem;
+                font-weight: 600;
+                max-width: 850px;
+                margin: 0 auto;
+                margin-top: -30px;
+            }
+            .detailsBox {
+                background-color: rgb(32, 161, 149);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-top: auto;
+                padding: 20px;  
+            }
+            .detailsBox ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                list-style-type: none;
+                padding: 0;
+            }
+            .detailsBox h2 {
+                text-align: center;
+                color: #e7d1b8;
+                font-size: 2.5rem;
+            }
+            .detailsBox ul li img {
+                width: 250px;
+                height: 250px;
+            }
+            .detailsBox ul li p {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                color: #e7d1b8;
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-top: -30px;
+            }
         </style>
     </head>
     <body>
@@ -86,6 +141,34 @@
                     <li><a class="button" href="startPage.html">Home</a></li>
                     <li><a class="button" href="startPage.html">Visualiser</a></li>             
                 </ul>  
+        </div>
+        <div class="titleBox">
+            <img class="logo" src="UnxNoBG.png" alt="Logo">
+            <p>Welcome to UnX, your explorer for insightful data and visualization of unemployment trends in Romania over the past 12 Months. 
+                Dive into the statistics presented to you through Charts and Graphs. 
+                With Unemployment Explorer, you're not just observing data, you're embarking on a journey of discovery.
+            </p>
+        </div>
+        <div class="detailsBox">
+            <h2>Methods of vizualization</h2>
+            <ul>
+                <li>
+                    <img src="UnxMapNoBg.png" alt="Map">
+                    <p>Cartographic</p>
+                </li>
+                <li>
+                    <img src="UnxPieNoBg.png" alt="Pie Charts">
+                    <p>Pie Charts</p>
+                </li>
+                <li>
+                    <img src="UnxBarNoBg.png" alt="Bar Charts">
+                    <p>Bar Charts</p>
+                </li>
+                <li>
+                    <img src="UnxGraphNoBg.png" alt="Graphs">
+                    <p>Graphs</p>
+                </li>
+            </ul>
         </div>
     </body>
 </html>
