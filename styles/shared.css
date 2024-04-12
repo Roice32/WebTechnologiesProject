@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    text-align: center;
+    background: #e7d1b8;
+}
+
+.navBar {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(32, 161, 149);  
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    width: 100%;
+}
+
+.navBar .logo {
+    width: 80px;  
+    height: 80px;  
+}
+
+.navBar .button {
+    color: #e7d1b8;
+    text-decoration: none;
+    font-size: 25px;
+    border: none;
+    background: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+@media (max-width: 600px) {
+    .navBar .button {
+        font-size: 18px; 
+    }
+}
+
+.navBar .button::before {
+    margin-left: auto;
+}
+
+.navBar .button::after, .navBar .button::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #e4d1bb;
+    display: block;
+    transition: 0.5s;
+}
+
+.navBar .button:hover::after, .navBar .button:hover::before {
+    width: 100%;
+}
+
+.navBar .button:visited {
+    color: #e7d1b8;
+}
+
+.navBar ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    position: absolute;
+}
+
+.navBar a {
+    text-decoration: none;
+}
+
+.navBar li {
+    float: left;
+    margin: 0px 10px;
+}
