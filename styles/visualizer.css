@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(217, 217, 217);
-    border: 2px solid black;
+    border: 2px solid rgb(45, 35, 104);
     border-radius: 20px;
     padding-bottom: 20px;
     margin: 10px;
@@ -79,4 +79,55 @@
     border: 2px solid rgb(32, 161, 149);
     border-radius: 10px;
     color: rgb(45, 35, 104);
+}
+
+#criteria {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+#criteria li {
+    max-width: 90%;
+    max-height: 90%;
+    align-content: left;
+    font-weight: 600;
+    padding: 10px;
+    border: 2px solid rgb(32, 161, 149);
+    border-radius: 10px;
+    color: rgb(45, 35, 104);
+}
+
+#criteria li:hover {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+}
+
+input[name="criterion"]:not(checked)::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -5px;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+input[name="criterion"]:checked::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -7px;
+    top: -7px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid rgb(45, 35, 104);
+    border-radius: 50%;
+    background-color: rgb(32, 161, 149);
+    transition-duration: 0.05s;
 }

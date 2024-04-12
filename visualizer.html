@@ -22,7 +22,7 @@
                 <div class="optionSelector">
                     <h2>Perioada:</h2>
                     <div class="timePeriodSliderDiv">
-                        <input type="range" min="0" max="100" value="50" class="timePeriodSlider" id="timePeriod">
+                        <input type="range" min="0" max="100" value="0" class="timePeriodSlider" id="timePeriod">
                         <script>
                             document.getElementById("timePeriod").addEventListener("mouseup", function() {
                                 snapSlider();
@@ -61,6 +61,31 @@
                 </div>
                 <div class="optionSelector">
                     <h2>Criteriu:</h2>
+                    <ul id="criteria">
+                        <li>
+                            <label for="residency">
+                                <input type="radio" id="residency" name="criterion" value="residency">
+                                Mediu de rezidență
+                            </label>
+                        </li>
+                        <li>
+                            <label for="education">
+                                <input type="radio" id="education" name="criterion" value="education">
+                                Nivel de educație
+                            </label>
+                        </li>
+                        <li>
+                            <label for="age">
+                                <input type="radio" id="age" name="criterion" value="age">
+                                Grupe de vârstă
+                            </label>
+                        </li>
+                        <li>
+                            <label for="gender">
+                                <input type="radio" id="gender" name="criterion" value="gender">
+                                Genuri
+                            </label>
+                        </li>
                 </div>
             </div>
         </main>
