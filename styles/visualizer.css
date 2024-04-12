@@ -145,7 +145,7 @@
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    min-width: 90%;
+    min-width: 60%;
     grid-gap: 10px;
     border: 2px solid rgb(45, 35, 104);
     border-radius: 10px;
@@ -154,4 +154,22 @@
 
 #counties li {
     text-align: left;
+}
+
+#visualizationType {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+.actionButton {
+    width: 10%;
+    aspect-ratio: 2/1;
+}
+
+#applyButton {
+    font-weight: 800;
+    width: 100%;
 }

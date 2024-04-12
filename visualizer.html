@@ -89,7 +89,6 @@
                 </div>
                 <div class="optionSelector">
                     <h2>Județe:</h2>
-                    <div>
                     <ul class="exclusiveOptions" id="whichCounties">
                         <label for="all" class="exclusiveSingleOption">
                             <li>
@@ -358,6 +357,38 @@
                             </label>
                         </li>
                     </ul>
+                </div>
+                <div class="optionSelector">
+                    <h2>Tip de vizualizare:</h2>
+                    <ul class="exclusiveOptions" id="visualizationType">
+                        <label for="map" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="map" name="visualizationType" value="map">
+                                Hartă
+                            </li>
+                        </label>
+                        <label for="pie" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="pie" name="visualizationType" value="pie">
+                                Diagramă circulară
+                            </li>
+                        </label>
+                        <label for="bar" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="bar" name="visualizationType" value="bar">
+                                Grafic de bare
+                            </li>
+                        </label>
+                        <label for="graph" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="graph" name="visualizationType" value="graph">
+                                Grafic de linii
+                            </li>
+                        </label>
+                    </ul>
+                </div>
+                <div class="actionButton">
+                    <button id="applyButton">Aplică</button>
                 </div>
             </div>
         </main>
