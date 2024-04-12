@@ -1,26 +1,427 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
     <head>
         <meta charset="utf-8">
-        <title>UnX - Visualizer</title>
         <link rel="stylesheet" href="styles/shared.css">
         <link rel="stylesheet" href="styles/visualizer.css">
+        <link rel="icon" type="image/png" href="images/UnXNoBG.png">
+        <title>UnX - Vizualizator</title>
     </head>
     <body>
         <header>
             <div class="navBar">
                 <img class="logo" src="images/UnxNoBG.png" alt="Logo">
                 <ul>
-                    <li><a class="button" href="index.html">Home</a></li>
-                    <li><a class="button" href="visualizer.html">Visualizer</a></li>             
+                    <li><a class="button" href="index.html">Acasă</a></li>
+                    <li><a class="button" href="visualizer.html">Vizualizator</a></li>             
                 </ul>  
-        </div>
+            </div>
         </header>
         <main>
+            <div class="optionsSection">
+                <div class="optionSelector">
+                    <h2>Perioada:</h2>
+                    <div class="timePeriodSliderDiv">
+                        <input type="range" min="0" max="100" value="0" class="timePeriodSlider" id="timePeriod">
+                        <script>
+                            document.getElementById("timePeriod").addEventListener("mouseup", function() {
+                                snapSlider();
+                            });
 
+                            document.getElementById("timePeriod").addEventListener("touchend", function() {
+                                snapSlider();
+                            });
+
+                            function snapSlider() {
+                                var slider = document.getElementById("timePeriod");
+                                var value = parseInt(slider.value);
+                                var snapValue = Math.round(value / 33.33) * 33.33;
+                                slider.value = snapValue;
+                            }
+                        </script>
+                        <ul id="monthsLabels">
+                            <li>
+                                🞁<br>
+                                3 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                6 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                9 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                12 luni
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="optionSelector">
+                    <h2>Criteriu:</h2>
+                    <ul class="exclusiveOptions" id="criteria">
+                        <label for="residency" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="residency" name="criterion" value="residency">
+                                Mediu de rezidență
+                            </li>
+                        </label>
+                        <label for="education" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="education" name="criterion" value="education">
+                                Nivel de educație
+                            </li>
+                        </label>
+                        <label for="age" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="age" name="criterion" value="age">
+                                Grupe de vârstă
+                            </li>
+                        </label>
+                        <label for="gender" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="gender" name="criterion" value="gender">
+                                Genuri
+                            </li>
+                        </label>
+                </div>
+                <div class="optionSelector">
+                    <h2>Județe:</h2>
+                    <ul class="exclusiveOptions" id="whichCounties">
+                        <label for="all" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="all" name="whichCounties" value="all">
+                                Toate
+                            </li>
+                        </label>
+                        <label for="selected" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="selected" name="whichCounties" value="selected">
+                                Selectate
+                            </li>
+                        </label>
+                    </ul>
+                    <ul id="counties">
+                        <li>
+                            <label for="alba">
+                                <input type="checkbox" id="alba" name="county" value="alba">
+                                Alba
+                            </label>
+                        </li>
+                        <li>
+                            <label for="arad">
+                                <input type="checkbox" id="arad" name="county" value="arad">
+                                Arad
+                            </label>
+                        </li>
+                        <li>
+                            <label for="arges">
+                                <input type="checkbox" id="arges" name="county" value="arges">
+                                Argeș
+                            </label>
+                        </li>
+                        <li>
+                            <label for="bacau">
+                                <input type="checkbox" id="bacau" name="county" value="bacau">
+                                Bacău
+                            </label>
+                        </li>
+                        <li>
+                            <label for="bihor">
+                                <input type="checkbox" id="bihor" name="county" value="bihor">
+                                Bihor
+                            </label>
+                        </li>
+                        <li>
+                            <label for="bistrita-nasaud">
+                                <input type="checkbox" id="bistrita-nasaud" name="county" value="bistrita-nasaud">
+                                Bistrița-Năsăud
+                            </label>
+                        </li>
+                        <li>
+                            <label for="botosani">
+                                <input type="checkbox" id="botosani" name="county" value="botosani">
+                                Botoșani
+                            </label>
+                        </li>
+                        <li>
+                            <label for="braila">
+                                <input type="checkbox" id="braila" name="county" value="braila">
+                                Brăila
+                            </label>
+                        </li>
+                        <li>
+                            <label for="brasov">
+                                <input type="checkbox" id="brasov" name="county" value="brasov">
+                                Brașov
+                            </label>
+                        </li>
+                        <li>
+                            <label for="buzau">
+                                <input type="checkbox" id="buzau" name="county" value="buzau">
+                                Buzău
+                            </label>
+                        </li>
+                        <li>
+                            <label for="calarasi">
+                                <input type="checkbox" id="calarasi" name="county" value="calarasi">
+                                Călărași
+                            </label>
+                        </li>
+                        <li>
+                            <label for="caras-severin">
+                                <input type="checkbox" id="caras-severin" name="county" value="caras-severin">
+                                Caraș-Severin
+                            </label>
+                        </li>
+                        <li>
+                            <label for="cluj">
+                                <input type="checkbox" id="cluj" name="county" value="cluj">
+                                Cluj
+                            </label>
+                        </li>
+                        <li>
+                            <label for="constanta">
+                                <input type="checkbox" id="constanta" name="county" value="constanta">
+                                Constanța
+                            </label>
+                        </li>
+                        <li>
+                            <label for="covasna">
+                                <input type="checkbox" id="covasna" name="county" value="covasna">
+                                Covasna
+                            </label>
+                        </li>
+                        <li>
+                            <label for="dambovita">
+                                <input type="checkbox" id="dambovita" name="county" value="dambovita">
+                                Dâmbovița
+                            </label>
+                        </li>
+                        <li>
+                            <label for="dolj">
+                                <input type="checkbox" id="dolj" name="county" value="dolj">
+                                Dolj
+                            </label>
+                        </li>
+                        <li>
+                            <label for="galati">
+                                <input type="checkbox" id="galati" name="county" value="galati">
+                                Galați
+                            </label>
+                        </li>
+                        <li>
+                            <label for="giurgiu">
+                                <input type="checkbox" id="giurgiu" name="county" value="giurgiu">
+                                Giurgiu
+                            </label>
+                        </li>
+                        <li>
+                            <label for="gorj">
+                                <input type="checkbox" id="gorj" name="county" value="gorj">
+                                Gorj
+                            </label>
+                        </li>
+                        <li>
+                            <label for="harghita">
+                                <input type="checkbox" id="harghita" name="county" value="harghita">
+                                Harghita
+                            </label>
+                        </li>
+                        <li>
+                            <label for="hunedoara">
+                                <input type="checkbox" id="hunedoara" name="county" value="hunedoara">
+                                Hunedoara
+                            </label>
+                        </li>
+                        <li>
+                            <label for="ialomita">
+                                <input type="checkbox" id="ialomita" name="county" value="ialomita">
+                                Ialomița
+                            </label>
+                        </li>
+                        <li>
+                            <label for="iasi">
+                                <input type="checkbox" id="iasi" name="county" value="iasi">
+                                Iași
+                            </label>
+                        </li>
+                        <li>
+                            <label for="ilfov">
+                                <input type="checkbox" id="ilfov" name="county" value="ilfov">
+                                Ilfov
+                            </label>
+                        </li>
+                        <li>
+                            <label for="maramures">
+                                <input type="checkbox" id="maramures" name="county" value="maramures">
+                                Maramureș
+                            </label>
+                        </li>
+                        <li>
+                            <label for="mehedinti">
+                                <input type="checkbox" id="mehedinti" name="county" value="mehedinti">
+                                Mehedinți
+                            </label>
+                        </li>
+                        <li>
+                            <label for="mures">
+                                <input type="checkbox" id="mures" name="county" value="mures">
+                                Mureș
+                            </label>
+                        </li>
+                        <li>
+                            <label for="neamt">
+                                <input type="checkbox" id="neamt" name="county" value="neamt">
+                                Neamț
+                            </label>
+                        </li>
+                        <li>
+                            <label for="olt">
+                                <input type="checkbox" id="olt" name="county" value="olt">
+                                Olt
+                            </label>
+                        </li>
+                        <li>
+                            <label for="prahova">
+                                <input type="checkbox" id="prahova" name="county" value="prahova">
+                                Prahova
+                            </label>
+                        </li>
+                        <li>
+                            <label for="salaj">
+                                <input type="checkbox" id="salaj" name="county" value="salaj">
+                                Sălaj
+                            </label>
+                        </li>
+                        <li>
+                            <label for="satu-mare">
+                                <input type="checkbox" id="satu-mare" name="county" value="satu-mare">
+                                Satu Mare
+                            </label>
+                        </li>
+                        <li>
+                            <label for="sibiu">
+                                <input type="checkbox" id="sibiu" name="county" value="sibiu">
+                                Sibiu
+                            </label>
+                        </li>
+                        <li>
+                            <label for="suceava">
+                                <input type="checkbox" id="suceava" name="county" value="suceava">
+                                Suceava
+                            </label>
+                        </li>
+                        <li>
+                            <label for="teleorman">
+                                <input type="checkbox" id="teleorman" name="county" value="teleorman">
+                                Teleorman
+                            </label>
+                        </li>
+                        <li>
+                            <label for="timis">
+                                <input type="checkbox" id="timis" name="county" value="timis">
+                                Timiș
+                            </label>
+                        </li>
+                        <li>
+                            <label for="tulcea">
+                                <input type="checkbox" id="tulcea" name="county" value="tulcea">
+                                Tulcea
+                            </label>
+                        </li>
+                        <li>
+                            <label for="valcea">
+                                <input type="checkbox" id="valcea" name="county" value="valcea">
+                                Vâlcea
+                            </label>
+                        </li>
+                        <li>
+                            <label for="vaslui">
+                                <input type="checkbox" id="vaslui" name="county" value="vaslui">
+                                Vaslui
+                            </label>
+                        </li>
+                        <li>
+                            <label for="vrancea">
+                                <input type="checkbox" id="vrancea" name="county" value="vrancea">
+                                Vrancea
+                            </label>
+                        </li>
+                        <li>
+                            <label for="bucuresti">
+                                <input type="checkbox" id="bucuresti" name="county" value="bucuresti">
+                                București
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="optionSelector">
+                    <h2>Tip de vizualizare:</h2>
+                    <ul class="exclusiveOptions" id="visualizationType">
+                        <label for="map" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="map" name="visualizationType" value="map">
+                                Hartă
+                            </li>
+                        </label>
+                        <label for="pie" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="pie" name="visualizationType" value="pie">
+                                Diagramă circulară
+                            </li>
+                        </label>
+                        <label for="bar" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="bar" name="visualizationType" value="bar">
+                                Grafic de bare
+                            </li>
+                        </label>
+                        <label for="graph" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="graph" name="visualizationType" value="graph">
+                                Grafic de linii
+                            </li>
+                        </label>
+                    </ul>
+                </div>
+                <button class="actionButton" id="applyButton">Aplică</button>
+                <div id="result">
+                    <h2 id="resultTitle">Rezultat:</h2>
+                    <div>
+                        <img id="resultImage" src="images/UnXMapNoBG.png" alt="Map">
+                    </div>
+                </div>
+                <div class="optionSelector">
+                    <h2>Fromat fișier:</h2>
+                    <ul class="exclusiveOptions" id="outputFileFormat">
+                        <label for="csv" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="csv" name="fileFormat" value="csv">
+                                CSV
+                            </li>
+                        </label>
+                        <label for="pdf" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="pdf" name="fileFormat" value="pdf">
+                                PDF
+                            </li>
+                        </label>
+                        <label for="svg" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="svg" name="fileFormat" value="svg">
+                                SVG
+                            </li>
+                        </label>
+                    </ul>
+                </div>
+                <button class="actionButton" id="downloadButton">Exportă</button>
+            </div>
         </main>
         <footer>
-
+            <p>&copy; 2024 UnX. Butnaru Alexandru, Morarasu Catalin-Dimitrie 2B4. FII UAIC 2024</p>
         </footer>
     </body>
 </html>
