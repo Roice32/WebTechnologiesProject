@@ -1,26 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
     <head>
         <meta charset="utf-8">
-        <title>UnX - Visualizer</title>
         <link rel="stylesheet" href="styles/shared.css">
         <link rel="stylesheet" href="styles/visualizer.css">
+        <link rel="icon" type="image/png" href="images/UnXNoBG.png">
+        <title>UnX - Vizualizator</title>
     </head>
-    <body>
-        <header>
+        <body>
+            <header>
             <div class="navBar">
                 <img class="logo" src="images/UnxNoBG.png" alt="Logo">
                 <ul>
-                    <li><a class="button" href="index.html">Home</a></li>
-                    <li><a class="button" href="visualizer.html">Visualizer</a></li>             
+                    <li><a class="button" href="index.html">Acasă</a></li>
+                    <li><a class="button" href="visualizer.html">Vizualizator</a></li>             
                 </ul>  
-        </div>
+            </div>
         </header>
         <main>
+            <div class="optionsSection">
+                <div class="optionSelector">
+                    <h2>Perioada:</h2>
+                    <div class="timePeriodSliderDiv">
+                        <input type="range" min="0" max="100" value="50" class="timePeriodSlider" id="timePeriod">
+                        <script>
+                            document.getElementById("timePeriod").addEventListener("mouseup", function() {
+                                snapSlider();
+                            });
 
+                            document.getElementById("timePeriod").addEventListener("touchend", function() {
+                                snapSlider();
+                            });
+
+                            function snapSlider() {
+                                var slider = document.getElementById("timePeriod");
+                                var value = parseInt(slider.value);
+                                var snapValue = Math.round(value / 33.33) * 33.33;
+                                slider.value = snapValue;
+                            }
+                        </script>
+                        <ul id="monthsLabels">
+                            <li>
+                                🞁<br>
+                                3 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                6 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                9 luni
+                            </li>
+                            <li>
+                                🞁<br>
+                                12 luni
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="optionSelector">
+                    <h2>Criteriu:</h2>
+                </div>
+            </div>
         </main>
         <footer>
-
+            <p>&copy; 2024 UnX. Butnaru Alexandru, Morarasu Catalin-Dimitrie 2B4. FII UAIC 2024</p>
         </footer>
     </body>
 </html>
