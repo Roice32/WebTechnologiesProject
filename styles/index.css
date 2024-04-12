@@ -1,0 +1,62 @@
+.titleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 10px;
+    min-height: 100vh;  
+}
+
+.titleBox .logo {
+    width: 600px;
+    height: 600px;
+}
+
+.titleBox p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(32, 161, 149);
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 850px;
+    margin: 0 auto;
+    margin-top: -30px;
+}
+
+.detailsBox {
+    background-color: rgb(32, 161, 149);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: auto;
+    padding: 20px;  
+}
+
+.detailsBox ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
+
+.detailsBox h2 {
+    text-align: center;
+    color: #e7d1b8;
+    font-size: 2.5rem;
+}
+
+.detailsBox ul li img {
+    width: 250px;
+    height: 250px;
+}
+
+.detailsBox ul li p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #e7d1b8;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: -30px;
+}
