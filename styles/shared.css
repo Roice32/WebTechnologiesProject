@@ -1,7 +1,7 @@
 body {
     margin: 0;
     text-align: center;
-    background: #e7d1b8;
+    background-color: rgb(231, 209, 184);
 }
 
 .navBar {
@@ -23,7 +23,7 @@ body {
 }
 
 .navBar .button {
-    color: #e7d1b8;
+    color: rgb(231, 209, 184);
     text-decoration: none;
     font-size: 25px;
     border: none;
@@ -48,7 +48,7 @@ body {
     content: '';
     width: 0%;
     height: 2px;
-    background: #e4d1bb;
+    background: rgb(228, 209, 187);
     display: block;
     transition: 0.5s;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .navBar .button:visited {
-    color: #e7d1b8;
+    color: rgb(231, 209, 184);
 }
 
 .navBar ul {
