@@ -2,6 +2,7 @@ body {
     margin: 0;
     text-align: center;
     background-color: rgb(231, 209, 184);
+    
 }
 
 .navBar {
@@ -11,6 +12,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(32, 161, 149);  
+    border: 2px solid rgb(45, 35, 104);
     padding: 0px;
     margin: 0px;
     position: fixed;

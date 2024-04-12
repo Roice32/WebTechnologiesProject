@@ -12,7 +12,7 @@
 }
 
 .optionSelector {
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,8 +48,8 @@
 .timePeriodSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: rgb(45, 35, 104, 1);
     cursor: pointer;
@@ -59,7 +59,7 @@
 .timePeriodSlider::-webkit-slider-thumb:hover {
     width: 25px;
     height: 25px;
-    background-color: rgb(32, 161, 149);
+    background-color: rgb(141, 228, 219);
     box-shadow: 0px 0px 0px 8px rgb(45, 35, 104);
     transition: 0.2s ease-in-out;
 }
@@ -90,6 +90,7 @@
     min-width: 90%;
     grid-gap: 10px;
 }
+
 .exclusiveSingleOption {
     max-width: 90%;
     max-height: 90%;
@@ -99,6 +100,11 @@
     border: 2px solid rgb(32, 161, 149);
     border-radius: 10px;
     color: rgb(45, 35, 104);
+    background-color: rgb(141, 228, 219);
+}
+
+.exclusiveSingleOption input[type="radio"]:checked ~ .exclusiveSingleOption {
+    background: linear-gradient(to right, rgb(45, 35, 104) 0%, rgb(32, 161, 149) 20%, rgb(141, 228, 219) 100%);
 }
 
 .exclusiveSingleOption:hover {
@@ -186,4 +192,31 @@
     border-radius: 20px;
     border-width: 5px;
     transition-duration: 0.3s;
+}
+
+#result {
+    min-width: 65%;
+    margin: 2%;
+    background-color: rgb(32, 161, 149);
+    border: 3px solid rgb(45, 35, 104);
+    border-radius: 10px;
+}
+
+#resultTitle {
+    color: rgb(231, 209, 184);
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 3px solid rgb(45, 35, 104);
+}
+
+#resultImage {
+    min-width: 10%;
+}
+
+#outputFileFormat {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 90%;
+    grid-gap: 20px;
 }

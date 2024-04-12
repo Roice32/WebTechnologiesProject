@@ -388,6 +388,36 @@
                     </ul>
                 </div>
                 <button class="actionButton" id="applyButton">Aplică</button>
+                <div id="result">
+                    <h2 id="resultTitle">Rezultat:</h2>
+                    <div>
+                        <img id="resultImage" src="images/UnXMapNoBG.png" alt="Map">
+                    </div>
+                </div>
+                <div class="optionSelector">
+                    <h2>Fromat fișier:</h2>
+                    <ul class="exclusiveOptions" id="outputFileFormat">
+                        <label for="csv" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="csv" name="fileFormat" value="csv">
+                                CSV
+                            </li>
+                        </label>
+                        <label for="pdf" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="pdf" name="fileFormat" value="pdf">
+                                PDF
+                            </li>
+                        </label>
+                        <label for="svg" class="exclusiveSingleOption">
+                            <li>
+                                <input type="radio" id="svg" name="fileFormat" value="svg">
+                                SVG
+                            </li>
+                        </label>
+                    </ul>
+                </div>
+                <button class="actionButton" id="downloadButton">Exportă</button>
             </div>
         </main>
         <footer>

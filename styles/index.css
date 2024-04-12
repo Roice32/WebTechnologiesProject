@@ -9,10 +9,10 @@
 }
 
 .titleBox .logo {
+    background: radial-gradient(circle at center, rgb(32, 161, 149), rgb(228, 209, 187), rgb(228, 209, 187));
     width: 600px;
     height: 600px;
 }
-
 .titleBox p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
