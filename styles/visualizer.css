@@ -1,0 +1,222 @@
+.optionsSection {
+    z-index: 1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 10px;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+.optionSelector {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(217, 217, 217);
+    border: 2px solid rgb(45, 35, 104);
+    border-radius: 20px;
+    padding-bottom: 20px;
+    margin: 10px;
+}
+
+.timePeriodSliderDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.timePeriodSlider {
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: rgb(32, 161, 149);
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+.timePeriodSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(45, 35, 104, 1);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.timePeriodSlider::-webkit-slider-thumb:hover {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(141, 228, 219);
+    box-shadow: 0px 0px 0px 8px rgb(45, 35, 104);
+    transition: 0.2s ease-in-out;
+}
+
+#monthsLabels {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 107%;
+    margin: 0;
+    padding: 0;
+}
+
+#monthsLabels li {
+    padding: 5px;
+    font-weight: 600;
+    border: 2px solid rgb(32, 161, 149);
+    border-radius: 10px;
+    color: rgb(45, 35, 104);
+}
+
+#criteria {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+.exclusiveSingleOption {
+    max-width: 90%;
+    max-height: 90%;
+    align-content: left;
+    font-weight: 600;
+    padding: 10px;
+    border: 2px solid rgb(32, 161, 149);
+    border-radius: 10px;
+    color: rgb(45, 35, 104);
+    background-color: rgb(141, 228, 219);
+}
+
+.exclusiveSingleOption input[type="radio"]:checked ~ .exclusiveSingleOption {
+    background: linear-gradient(to right, rgb(45, 35, 104) 0%, rgb(32, 161, 149) 20%, rgb(141, 228, 219) 100%);
+}
+
+.exclusiveSingleOption:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+}
+
+.exclusiveOptions input[type="radio"]:not(checked)::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -5px;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+.exclusiveOptions input[type="radio"]:checked::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -7px;
+    top: -7px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid rgb(45, 35, 104);
+    border-radius: 50%;
+    background-color: rgb(32, 161, 149);
+    transition-duration: 0.05s;
+}
+
+#whichCounties {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+#counties {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 60%;
+    grid-gap: 10px;
+    border: 2px solid rgb(45, 35, 104);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#counties li {
+    text-align: left;
+}
+
+#visualizationType {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 90%;
+    grid-gap: 10px;
+}
+
+.actionButton {
+    margin-top: 2%;
+    max-width: 15%;
+    width: 100%;
+    aspect-ratio: 3/1;
+    font-size: larger;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px rgb(45, 35, 104);
+    color: rgb(231, 209, 184);
+    background-color: rgb(32, 161, 149);
+    border: 3px solid rgb(45, 35, 104);
+    border-radius: 30px;
+    transition-duration: 0.3s;
+}
+
+.actionButton:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    border-radius: 20px;
+    border-width: 5px;
+    transition-duration: 0.3s;
+}
+
+#result {
+    min-width: 65%;
+    margin: 2%;
+    background-color: rgb(32, 161, 149);
+    border: 3px solid rgb(45, 35, 104);
+    border-radius: 10px;
+}
+
+#resultTitle {
+    color: rgb(231, 209, 184);
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 3px solid rgb(45, 35, 104);
+}
+
+#resultImage {
+    min-width: 10%;
+}
+
+#outputFileFormat {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 90%;
+    grid-gap: 20px;
+}

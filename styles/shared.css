@@ -1,15 +1,18 @@
 body {
     margin: 0;
     text-align: center;
-    background: #e7d1b8;
+    background-color: rgb(231, 209, 184);
+    
 }
 
 .navBar {
+    z-index: 2;
     display: flex;
     list-style-type: none;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(32, 161, 149);  
+    border: 2px solid rgb(45, 35, 104);
     padding: 0px;
     margin: 0px;
     position: fixed;
@@ -22,7 +25,7 @@ body {
 }
 
 .navBar .button {
-    color: #e7d1b8;
+    color: rgb(231, 209, 184);
     text-decoration: none;
     font-size: 25px;
     border: none;
@@ -47,7 +50,7 @@ body {
     content: '';
     width: 0%;
     height: 2px;
-    background: #e4d1bb;
+    background: rgb(228, 209, 187);
     display: block;
     transition: 0.5s;
 }
@@ -57,7 +60,7 @@ body {
 }
 
 .navBar .button:visited {
-    color: #e7d1b8;
+    color: rgb(231, 209, 184);
 }
 
 .navBar ul {

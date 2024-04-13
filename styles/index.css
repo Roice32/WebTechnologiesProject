@@ -9,10 +9,10 @@
 }
 
 .titleBox .logo {
+    background: radial-gradient(circle at center, rgb(32, 161, 149), rgb(228, 209, 187), rgb(228, 209, 187));
     width: 600px;
     height: 600px;
 }
-
 .titleBox p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -43,7 +43,7 @@
 
 .detailsBox h2 {
     text-align: center;
-    color: #e7d1b8;
+    color: rgb(228, 209, 187);
     font-size: 2.5rem;
 }
 
@@ -55,7 +55,7 @@
 .detailsBox ul li p {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
-    color: #e7d1b8;
+    color: rgb(228, 209, 187);
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: -30px;
