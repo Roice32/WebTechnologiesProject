@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles/shared.css">
+        <link rel="stylesheet" href="styles/report.css">
+        <link rel="icon" type="image/png" href="images/UnXNoBG.png">
+        <title>UnX - Raport</title>
+    </head>
+    <body>
+        <header>
+            <div class="navBar">
+                    <img class="logo" src="images/UnxNoBG.png" alt="Logo">
+                    <ul>
+                        <li><a class="button" href="index.html">Acasă</a></li>
+                        <li><a class="button" href="visualizer.html">Vizualizator</a></li>
+                        <li><a class="button" href="report.html">Asistență</a></li>             
+                    </ul>  
+            </div>
+        </header>
+        <main>
+            <div class="formBox"> 
+                <h1>Raporteaza o problemă!</h1>
+                <form class="reportForm">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+            
+                    <label for="issueType">Tipul de problemă:</label>
+                    <select id="issueType" name="issueType" required>
+                        <option value="">Selectează un tip de problemă</option>
+                        <option value="technical">Eroare tehnică</option>
+                        <option value="misleading">Date/Rezultate eronate</option>
+                    </select>
+            
+                    <label for="report">Descriere:</label>
+                    <textarea id="report" name="report" rows="4" cols="50" required></textarea>
+            
+                    <input type="submit" value="Trimite">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 UnX. Butnaru Alexandru, Morarasu Catalin-Dimitrie 2B4. FII UAIC 2024</p>
+        </footer>
+    </body>
+</html>
