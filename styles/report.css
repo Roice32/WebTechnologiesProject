@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+.formBox {
+    background-color: rgb(32, 161, 149);
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 40px;
+    border-radius: 20px;  
+    max-width: 600px;  
+    margin: 0 auto;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.reportForm {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  
+    border-radius: 10px;  
+    max-width: 600px;  
+    margin: 0 auto;  
+    z-index: 1;
+}
+
+input, select{
+    padding: 5px;
+    background-color: #f8f9fa;  
+    border-radius: 10px;  
+    padding: 20px;  
+    max-width: 600px;  
+    margin: 0 auto;  
+}
+textarea {
+    padding: 5px;
+    background-color: #f8f9fa;  
+    border-radius: 10px;  
+    padding: 20px;  
+    max-width: 600px;  
+    margin: 0 auto;
+    resize: none; 
+}
+input[type="email"]{
+    width: 20rem;
+    height: 10px;
+    font-size: 16px;
+}
+select {
+    width: 20rem;
+    font-size: 16px;
+
+}
+input[type="submit"] {
+    margin-top: 10px;
+    background-color:  rgb(231, 209, 184);  
+    color: black;  
+    cursor: pointer; 
+    transition-duration: 0.3s; 
+    border: 3px solid rgb(45, 35, 104);
+    width: 150px;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #b36500;
+    transform: scale(1.05); 
+    transition-duration: 0.3s;
+    border: 3px solid rgb(45, 35, 104);
+    font-size: 18px;
+}
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(231, 209, 184);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-top: 20px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.534);
+}
+label {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    color: rgb(231, 209, 184);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.534);
+
+}
