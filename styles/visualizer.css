@@ -46,7 +46,6 @@
 }
 
 .timePeriodSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
@@ -94,7 +93,6 @@
 .exclusiveSingleOption {
     max-width: 90%;
     max-height: 90%;
-    align-content: left;
     font-weight: 600;
     padding: 10px;
     border: 2px solid rgb(32, 161, 149);
@@ -169,29 +167,6 @@
     grid-template-columns: repeat(2, 1fr);
     min-width: 90%;
     grid-gap: 10px;
-}
-
-.actionButton {
-    margin-top: 2%;
-    max-width: 15%;
-    width: 100%;
-    aspect-ratio: 3/1;
-    font-size: larger;
-    font-weight: 800;
-    text-shadow: 1px 1px 1px rgb(45, 35, 104);
-    color: rgb(231, 209, 184);
-    background-color: rgb(32, 161, 149);
-    border: 3px solid rgb(45, 35, 104);
-    border-radius: 30px;
-    transition-duration: 0.3s;
-}
-
-.actionButton:hover {
-    cursor: pointer;
-    transform: scale(1.2);
-    border-radius: 20px;
-    border-width: 5px;
-    transition-duration: 0.3s;
 }
 
 #result {

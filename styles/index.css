@@ -10,7 +10,7 @@
 }
 
 .titleBox .logoBox {
-    background-color: rgb(32, 161, 149);  
+    background: radial-gradient(circle, rgb(32, 161, 149) 0%, rgb(141, 228, 219) 50%, rgba(228, 209, 187) 100%);
     display: inline-block;   
     border-radius: 20%;
     width: 450px;
