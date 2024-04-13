@@ -94,6 +94,7 @@ body {
     color: rgb(231, 209, 184);
     background-color: rgb(32, 161, 149);
     border: 3px solid rgb(45, 35, 104);
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
     border-radius: 30px;
     transition-duration: 0.3s;
 }
