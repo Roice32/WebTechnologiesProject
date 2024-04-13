@@ -9,6 +9,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    margin-top: 90px;
 }
 .formBox {
     background-color: rgb(32, 161, 149);
@@ -18,11 +19,11 @@ main {
     justify-content: center;
     padding: 30px;
     padding-top: 40px;
-    border-radius: 20px;  
-    max-width: 600px;  
+    border: 2px solid rgb(45, 35, 104);
+    border-radius: 20px;
+    min-width: 65%;
     margin: 0 auto;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); 
-    max-height: 80vh;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
 }
 .reportForm {
@@ -62,24 +63,6 @@ select {
     width: 20rem;
     font-size: 16px;
 
-}
-input[type="submit"] {
-    margin-top: 10px;
-    background-color:  rgb(231, 209, 184);  
-    color: black;  
-    cursor: pointer; 
-    transition-duration: 0.3s; 
-    border: 3px solid rgb(45, 35, 104);
-    width: 150px;
-    font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #b36500;
-    transform: scale(1.05); 
-    transition-duration: 0.3s;
-    border: 3px solid rgb(45, 35, 104);
-    font-size: 18px;
 }
 h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;

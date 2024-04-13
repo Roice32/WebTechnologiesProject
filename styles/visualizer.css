@@ -6,8 +6,7 @@
     align-items: center;
     justify-content: center;
     margin-top: auto;
-    padding: 10px;
-    padding-top: 80px;
+    padding: 80px 10px;
     min-height: 100vh;
 }
 
@@ -46,7 +45,6 @@
 }
 
 .timePeriodSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
@@ -79,6 +77,7 @@
     padding: 5px;
     font-weight: 600;
     border: 2px solid rgb(32, 161, 149);
+    background-color: rgb(141, 228, 219);
     border-radius: 10px;
     color: rgb(45, 35, 104);
 }
@@ -94,7 +93,6 @@
 .exclusiveSingleOption {
     max-width: 90%;
     max-height: 90%;
-    align-content: left;
     font-weight: 600;
     padding: 10px;
     border: 2px solid rgb(32, 161, 149);
@@ -171,29 +169,6 @@
     grid-gap: 10px;
 }
 
-.actionButton {
-    margin-top: 2%;
-    max-width: 15%;
-    width: 100%;
-    aspect-ratio: 3/1;
-    font-size: larger;
-    font-weight: 800;
-    text-shadow: 1px 1px 1px rgb(45, 35, 104);
-    color: rgb(231, 209, 184);
-    background-color: rgb(32, 161, 149);
-    border: 3px solid rgb(45, 35, 104);
-    border-radius: 30px;
-    transition-duration: 0.3s;
-}
-
-.actionButton:hover {
-    cursor: pointer;
-    transform: scale(1.2);
-    border-radius: 20px;
-    border-width: 5px;
-    transition-duration: 0.3s;
-}
-
 #result {
     min-width: 65%;
     margin: 2%;
@@ -209,8 +184,28 @@
     border-bottom: 3px solid rgb(45, 35, 104);
 }
 
-#resultImage {
-    min-width: 10%;
+.resultImage {
+    min-width: 80%;
+    padding: 20px;
+}
+
+.infoWhenHovered {
+    visibility: hidden;
+    background-color: rgb(141, 228, 219);
+    border: 2px solid rgb(45, 35, 104);
+    border-radius: 10px;
+    padding: 10px;
+    color: rgb(45, 35, 104);
+    font-weight: 600;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    transition-duration: 0.3s;
+}
+
+.hoverForInfo:hover .infoWhenHovered {
+    visibility: visible;
 }
 
 #outputFileFormat {
