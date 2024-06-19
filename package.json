@@ -1,0 +1,21 @@
+{
+  "name": "web-technologies-project",
+  "version": "1.0.0",
+  "description": "Unemployment Explorer, 2B4 @ FII UAIC 2024",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "nodemon --env-file=.env server"
+  },
+  "keywords": [],
+  "author": "Butnaru Alexandru & Morarasu Catalin-Dimitrie",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5"
+  }
+}
