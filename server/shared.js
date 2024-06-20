@@ -21,3 +21,18 @@ export function fetchAppProperties() {
         monthsToGoBack
     }
 }
+
+export async function getRequestBody(req) {
+    return new Promise((resolve, reject) => {
+        var body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            resolve(body);
+        });
+        req.on('error', error => {
+            reject(error);
+        });
+    });
+}
