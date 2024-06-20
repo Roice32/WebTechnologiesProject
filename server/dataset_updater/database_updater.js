@@ -123,5 +123,5 @@ async function updateDatabaseFromDatasets() {
         monthsToGoBack--;
     }
 }
-updateDatabaseFromDatasets();
-//export default updateDatabaseFromDatasets;
+
+export default updateDatabaseFromDatasets;
