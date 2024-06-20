@@ -1,12 +1,11 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import fs from "fs";
+import { fetchAppProperties } from "../shared.js";
 
 const baseResourcesUri = 'https://data.gov.ro/dataset/somajul-inregistrat';
 const baseDestinationDirectory = '../../data'
-var lastStoredMonth;
-var lastStoredYear;
-var monthsToGoBack;
+var { lastStoredYear, lastStoredMonth, monthsToGoBack } = fetchAppProperties();
 
 const MMtoMonth = [
     'nonexistent',
@@ -37,14 +36,6 @@ function getDatasetsUrisFromPage(resourcesPage) {
 
 function getDatasetNameFromUri(uri) {
     return uri.split('/').pop();
-}
-
-function fetchAppProperties() {
-    const appProperties = fs.readFileSync('../../app.properties', 'utf8');
-    const lines = appProperties.split('\n');
-    lastStoredYear = parseInt(lines[0].split('=')[1]);
-    lastStoredMonth = parseInt(lines[1].split('=')[1]);
-    monthsToGoBack = parseInt(lines[2].split('=')[1]);
 }
 
 function buildDestinationFile(datasetUri) {
@@ -116,5 +107,5 @@ async function downloadDatasets() {
         console.log(`Successfully downloaded ${datasetsDownloaded} datasets`);
     }
 }
-downloadDatasets();
-//export default downloadSingleDataset;
+
+export default downloadDatasets;
