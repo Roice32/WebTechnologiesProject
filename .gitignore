@@ -1,0 +1,5 @@
+/node_modules
+/data/medii/*.csv
+/data/nivele_educatie/*.csv
+/data/rate/*.csv
+/data/varste/*.csv
