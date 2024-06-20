@@ -51,7 +51,7 @@ async function fetchData(monthsCount, criterion, counties) {
         if (counties.length == 0) {
             result = await dbConnection.query(wholeCountrySelectQuery, [startDateString, endDateString]);
         } else {
-            const normalizedCounties = counties.map(county => county.trim().toUpperCase());
+            const normalizedCounties = counties.split(',').map(county => county.trim().toUpperCase());
             result = await dbConnection.query(givenCountiesSelectQuery, [startDateString, endDateString, normalizedCounties]);
         }
         return reduceData(result.rows);
