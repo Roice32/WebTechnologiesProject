@@ -2,6 +2,7 @@ import url from 'url';
 import { navigateTo } from './router.js';
 import { resourceTypes, loadResource } from './resource_loader.js';
 import { handleAPICall } from './controllers.js';
+import { getRequestBody } from '../shared.js';
 
 function pageRequested(requestPath) {
     return requestPath === '/' || requestPath.endsWith('.html');
@@ -16,17 +17,18 @@ export default async function handleRequest(req, res) {
     const requestUrl = url.parse(req.url, true);
     const requestPath = requestUrl.pathname;
     const methodType = req.method;
-    const parameters = requestUrl.query;
+    var parameters;
+    if (methodType === 'GET')
+        parameters = requestUrl.query;
+    else if (methodType === 'POST')
+        parameters = JSON.parse(await getRequestBody(req));
+    else
+        parameters = {};
 
-    if (methodType === 'GET') {
-        if (pageRequested(requestPath))
-            await navigateTo(requestPath, res);
-        else if (resourceRequested(requestPath))
-            await loadResource(requestPath, res);
-        else 
-            await handleAPICall(requestPath, methodType, parameters, res);
-    } else {
-        res.writeHead(405, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Method not allowed' }));
-    }
+    if (pageRequested(requestPath))
+        await navigateTo(requestPath, res);
+    else if (resourceRequested(requestPath))
+        await loadResource(requestPath, res);
+    else
+        await handleAPICall(requestPath, methodType, parameters, res);
 }
