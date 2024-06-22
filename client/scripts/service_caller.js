@@ -6,7 +6,9 @@ export async function fetchData(monthsCount, criterion, counties) {
     });
 
     const response = await fetch(`http://localhost:2048/api/unemployment-data?${parameters.toString()}`);
-    console.log(response);
+    const text = await response.text();
+    const data = new Map(JSON.parse(text));
+    return data;
 }
 
 export async function sendReport(email, type, description) {
@@ -22,5 +24,6 @@ export async function sendReport(email, type, description) {
         },
         body: JSON.stringify(parameters)
     });
-    console.log(response);
+    const text = await response.text();
+    return text;
 }
