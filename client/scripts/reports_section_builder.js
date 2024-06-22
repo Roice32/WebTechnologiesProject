@@ -32,6 +32,11 @@ async function buildInteractionSection(report) {
     textArea.placeholder = 'Răspunsul dvs. la problema semnalată';
     textArea.id = 'textArea#' + report.id;
 
+    const errorMessage = document.createElement('h2');
+    errorMessage.textContent = '';
+    errorMessage.classList.add('errorMessage');
+    errorMessage.id = 'h2#' + report.id;
+
     const resolve = document.createElement('button');
     resolve.textContent = 'Închide';
     resolve.classList.add('actionButton');
@@ -43,6 +48,7 @@ async function buildInteractionSection(report) {
     const interactionDiv = document.createElement('div');
     interactionDiv.classList.add('interactionDiv');
     interactionDiv.appendChild(textArea);
+    interactionDiv.appendChild(errorMessage);
     interactionDiv.appendChild(resolve);
     return interactionDiv;
 }

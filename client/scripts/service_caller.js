@@ -58,3 +58,25 @@ export async function resolveReport(reportId, response) {
     });
     return fetchResponse.status;
 }
+
+export async function fetchAppData() {
+    const response = await fetch('http://localhost:2048/api/app-data');
+    const text = await response.text();
+    return JSON.parse(text);
+}
+
+export async function updateApp(month, year, monthsCount) {
+    const parameters = {
+        month,
+        year,
+        monthsCount
+    };
+    const response = await fetch('http://localhost:2048/api/update-app', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parameters)
+    });
+    return response.status;
+}

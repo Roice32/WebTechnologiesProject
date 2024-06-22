@@ -32,13 +32,32 @@
                 <label for="password">Parolă:</label>
                 <input type="password" id="password" name="password" placeholder="Parolă" required>
             </form>
-            <h2 id="loginError"></h2>
-            <button type="submit" class="actionButton" id="loginButton">Trimite</button>
+            <h2 class="errorMessage" id="loginError"></h2>
+            <button type="submit" class="actionButton" id="loginButton">Conectare</button>
             <script src="../scripts/login.js" type="module"></script>
         </div>
-        <div id="adminPanel">
+        <button class="actionButton" id="logoutButton">Deconectare</button>
+        <script src="../scripts/logout.js" type="module"></script>
+        <div id="appManagementPanel">
+            <h1>Informații aplicație</h1>
+            <div class="appInfoRow">
+                <label for="lastStoredMonth">Ultima lună stocată:</label>
+                <span id="lastStoredMonth"></span>
+                <label for="monthsCount">Nr. luni memorate:</label>
+                <span id="monthsCount"></span>
+            </div>
+            <div class="appInfoRow">
+                <label for="newLastStoredMonth">Nouă ultimă lună stocată:</label>
+                <input type="text" id="newLastStoredMonth" name="newLastStoredMonth" placeholder="LL/YYYY" required>
+                <label for="newMonthsCount">Nou nr. luni memorate:</label>
+                <input type="number" id="newMonthsCount" name="newMonthsCount" placeholder="N>=12" required>
+            </div>
+            <h2 class="errorMessage" id="appUpdateError"></h2>
+            <button class="actionButton" id="updateAppButton">Încearcă actualizare</button>
+        </div>
+        <div id="openReportsPanel">
             <div id="openReports">
-                <h1 class="interactiveHeader">Rapoarte în așteptare</h2>
+                <h1>Rapoarte în așteptare</h2>
                 <div id="openReportsSection"></div>
             </div>
         </div>

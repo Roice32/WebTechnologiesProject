@@ -6,10 +6,12 @@ body {
 }
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
     margin-top: 90px;
+    gap: 20px;
 }
 .formBox {
     background-color: rgb(32, 161, 149);
