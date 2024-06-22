@@ -4,7 +4,6 @@ export async function fetchData(monthsCount, criterion, counties) {
         criterion,
         counties: counties.join(',')
     });
-
     const response = await fetch(`http://localhost:2048/api/unemployment-data?${parameters.toString()}`);
     const text = await response.text();
     const data = new Map(JSON.parse(text));

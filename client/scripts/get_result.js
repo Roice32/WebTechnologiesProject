@@ -5,8 +5,7 @@ import { generatePieChart } from "./pie_chart.js";
 import { exportAsCsv, exportAsSvg, exportAsPdf } from "./export_chart.js";
 
 function getSelectedMonthsCount() {
-    const sliderValue = parseInt(document.getElementById('timePeriod').value);
-    return 3 + Math.floor(sliderValue / 30) * 3;
+    return parseInt(document.getElementById('timePeriod').value);
 }
 
 function getSelectedCriterion() {
