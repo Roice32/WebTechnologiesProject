@@ -26,44 +26,13 @@
             <div class="optionsSection">
                 <div class="optionSelector">
                     <h2>Perioada:</h2>
+                    <h4 id="timePeriodInfo"></h4>
                     <div class="timePeriodSliderDiv">
                         <input type="range" min="0" max="100" value="0" class="timePeriodSlider" id="timePeriod">
-                        <script>
-                            document.getElementById("timePeriod").addEventListener("mouseup", function() {
-                                snapSlider();
-                            });
-
-                            document.getElementById("timePeriod").addEventListener("touchend", function() {
-                                snapSlider();
-                            });
-
-                            function snapSlider() {
-                                var slider = document.getElementById("timePeriod");
-                                var value = parseInt(slider.value);
-                                var snapValue = Math.round(value / 33.33) * 33.33;
-                                slider.value = snapValue;
-                            }
-                        </script>
-                        <ul id="monthsLabels">
-                            <li>
-                                🞁<br>
-                                3 luni
-                            </li>
-                            <li>
-                                🞁<br>
-                                6 luni
-                            </li>
-                            <li>
-                                🞁<br>
-                                9 luni
-                            </li>
-                            <li>
-                                🞁<br>
-                                12 luni
-                            </li>
-                        </ul>
+                        <ul id="monthsLabels"></ul>
                     </div>
                 </div>
+                <script type="module" src="../scripts/time_period_slider_builder.js"></script>
                 <div class="optionSelector">
                     <h2>Criteriu:</h2>
                     <div class="exclusiveOptions" id="criteria">
