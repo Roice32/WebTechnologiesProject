@@ -33,7 +33,7 @@ async function buildInteractionSection(report) {
     textArea.id = 'textArea#' + report.id;
 
     const resolve = document.createElement('button');
-    resolve.textContent = 'Marchează ca rezolvat';
+    resolve.textContent = 'Închide';
     resolve.classList.add('actionButton');
     resolve.id = 'button#' + report.id;
     resolve.addEventListener('click', async () => {
