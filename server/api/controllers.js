@@ -2,6 +2,7 @@ import fetchData from '../services/data_fetcher.js';
 import sendReport from '../services/post_report.js';
 import login from '../services/login.js';
 import fetchOpenReports from '../services/get_open_reports.js';
+import resolveReport from '../services/resolve_report.js';
 
 async function getUnemploymentData(parameters, res) {
     try {
@@ -52,6 +53,18 @@ async function loginAdmin(parameters, res) {
     }
 }
 
+async function patchReport(parameters, res) {
+    const { reportId, response } = parameters;
+    const result = await resolveReport(reportId, response);
+    if (result === '200') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Report closed' }));
+    } else {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: result }));
+    }
+}
+
 export async function handleAPICall(requestPath, methodType, parameters, res) {
     const unparameterizedPath = requestPath.split('?')[0];
     if (unparameterizedPath === '/api/unemployment-data' && methodType === 'GET') {
@@ -60,8 +73,10 @@ export async function handleAPICall(requestPath, methodType, parameters, res) {
         await postReport(parameters, res);
     } else if (unparameterizedPath.startsWith('/api/login') && methodType === 'GET') {
         await loginAdmin(parameters, res);
-    } else if (unparameterizedPath === '/api/openReports' && methodType === 'GET') {
+    } else if (unparameterizedPath === '/api/open-reports' && methodType === 'GET') {
         await getOpenReports(res);
+    } else if (unparameterizedPath === '/api/close-report' && methodType === 'PATCH') {
+        await patchReport(parameters, res);
     } else {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'API endpoint not found' }));

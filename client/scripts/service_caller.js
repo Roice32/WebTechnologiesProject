@@ -39,7 +39,22 @@ export async function attemptLogin(username, password) {
 }
 
 export async function fetchOpenReports() {
-    const response = await fetch('http://localhost:2048/api/openReports');
+    const response = await fetch('http://localhost:2048/api/open-reports');
     const text = await response.text();
     return JSON.parse(text);
+}
+
+export async function resolveReport(reportId, response) {
+    const parameters = {
+        reportId,
+        response
+    };
+    const fetchResponse = await fetch('http://localhost:2048/api/close-report', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(parameters)
+    });
+    return fetchResponse.status;
 }
