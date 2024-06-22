@@ -26,7 +26,7 @@ document.getElementById('applyButton').addEventListener('click', async () => {
     if (monthsCount && criterion) {
         try {
             const response = await fetchData(monthsCount, criterion, counties);
-            console.log(response);
+            // Foloseste response pentru a face diagramele
         } catch (error) {
             alert(error);
         }
