@@ -1,6 +1,4 @@
 export function generateLineChart(ctx, labels, itemData) {
-    // let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    // let itemData = [65, 59, 80, 81, 56, 55, 40];
     
     const data = {
         labels: labels,

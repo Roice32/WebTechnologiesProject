@@ -2,6 +2,7 @@ import { fetchData } from "./service_caller.js";
 import { generateBarChart } from "./bar_chart.js";
 import { generateLineChart } from "./line_chart.js";
 import { generatePieChart } from "./pie_chart.js";
+import { exportAsCsv, exportAsSvg, exportAsPdf } from "./export_chart.js";
 
 function getSelectedMonthsCount() {
     const sliderValue = parseInt(document.getElementById('timePeriod').value);
@@ -25,18 +26,30 @@ function getSelectedCounties() {
 function extractLabelAndData(response) {
     const labels = [];
     const data = [];
-    labels.push('January');
-    labels.push('February');
-    data.push(10);
-    data.push(20);
+    for(const [county, values] of response) {
+        for(const column in values) {
+            if (column !== 'total') {
+                if (!labels.includes(column)) {
+                    labels.push(column);
+                    data.push(0);
+                }
+            }
+        }
+    }
+    for(const [county, values] of response) {
+        for(const column in values) {
+            data[labels.indexOf(column)] += values[column];
+        }
+    }
     return { labels, data };
 }
 
 let currentChart = null;
+let counties = [];
 document.getElementById('applyButton').addEventListener('click', async () => {
     const monthsCount = getSelectedMonthsCount();
     const criterion = getSelectedCriterion();
-    const counties = getSelectedCounties();
+    counties = getSelectedCounties();
 
     const selectedType = document.querySelector('input[name="visualizationType"]:checked').value;
 
@@ -68,5 +81,26 @@ document.getElementById('applyButton').addEventListener('click', async () => {
         }
     } else {
         alert('Months count and criterion are required');
+    }
+});
+
+document.getElementById("downloadButton").addEventListener("click", function() {
+    const selectedFormat = document.querySelector('input[name="fileFormat"]:checked').value;
+    if (currentChart !== null) {
+        switch (selectedFormat) {
+            case 'csv':
+                exportAsCsv(currentChart, counties);
+                break;
+            case 'svg':
+                exportAsSvg(currentChart);
+                break;
+            case 'pdf':
+                exportAsPdf(currentChart, counties);
+                break;
+            default:
+                alert('Select a file format to export!');
+        }
+    } else {
+        alert('No chart to export!');
     }
 });
