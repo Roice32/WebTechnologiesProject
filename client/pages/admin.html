@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <script src="../scripts/admin_page_controller.js" type="module"></script>
+    <link rel="stylesheet" href="../styles/shared.css">
+    <link rel="stylesheet" href="../styles/forms_shared.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="icon" type="image/png" href="../images/UnXNoBG.png">
+    <title>UnX - Administrativ</title>
+</head>
+
+<body>
+    <header>
+        <div class="navBar">
+            <img class="logo" src="../images/UnxNoBG.png" alt="Logo">
+            <ul>
+                <li><a class="button" href="index.html">Acasă</a></li>
+                <li><a class="button" href="visualizer.html">Vizualizator</a></li>
+                <li><a class="button" href="report.html">Asistență</a></li>
+                <li><a class="button" href="admin.html">Administrativ</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="formBox" id="loginForm">
+            <h1>Conectează-te ca administrator!</h1>
+            <form class="form">
+                <label for="username">Nume:</label>
+                <input type="text" id="username" name="username" placeholder="Nume administrator" required>
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" name="password" placeholder="Parolă" required>
+            </form>
+            <h2 id="loginError"></h2>
+            <button type="submit" class="actionButton" id="loginButton">Trimite</button>
+            <script src="../scripts/login.js" type="module"></script>
+        </div>
+        <div id="adminPanel">
+            <div id="openReports">
+                <h2 class="interactiveHeader">Rapoarte în așteptare</h2>
+                <div id="openReportsSection"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 UnX. Butnaru Alexandru, Morarasu Catalin-Dimitrie 2B4. FII UAIC 2024</p>
+    </footer>
+</body>
+
+</html>

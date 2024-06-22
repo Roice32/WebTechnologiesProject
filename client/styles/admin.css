@@ -1,0 +1,12 @@
+#loginForm {
+    display: none;
+}
+
+#loginError {
+    color: red;
+    font-size: 1.5em;
+}
+
+#adminPanel {
+    display: none;
+}

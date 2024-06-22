@@ -27,3 +27,19 @@ export async function sendReport(email, type, description) {
     const text = await response.text();
     return text;
 }
+
+export async function attemptLogin(username, password) {
+    const parameters = new URLSearchParams({
+        username,
+        password
+    });
+    const response = await fetch(`http://localhost:2048/api/login?${parameters.toString()}`);
+    const responseBody = await response.text();
+    return responseBody;
+}
+
+export async function fetchOpenReports() {
+    const response = await fetch('http://localhost:2048/api/openReports');
+    const text = await response.text();
+    return JSON.parse(text);
+}
