@@ -102,7 +102,7 @@ async function updateTable(table, year, month) {
         return `${rowsModified} rows modified successfully in '${table}' table for ${yearAndMonth} dataset.`;
     } catch (error) {
         dbConnection.query('ROLLBACK');
-        console.log(`Failed to process '${table}' dataset at ${datasetPath} with error: ${error}`);
+        console.log(`Eroare la actualizarea tabelului '${table}' cu ${datasetPath}: ${error}`);
     } finally {
         dbConnection.release();
     }
@@ -113,7 +113,9 @@ async function updateDatabaseFromDatasets() {
     while (monthsToGoBack > 0) {
         for (const table of datasetTypes) {
             const result = await updateTable(table, lastStoredYear, lastStoredMonth);
-            console.log(result);
+            if (result.includes('Eroare')) {
+                return result;
+            }
         }
         lastStoredMonth--;
         if (lastStoredMonth == 0) {

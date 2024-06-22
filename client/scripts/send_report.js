@@ -30,16 +30,19 @@ document.getElementById('submitReport').addEventListener('click', async () => {
     const description = getDescription();
     if (email && type !== -1 && description) {
         if (!validEmail(email)) {
-            alert('Invalid email address');
+            document.getElementById('reportError').textContent = 'Email invalid';
+            document.getElementById('reportError').style.display = 'block';
             return;
         }
         try {
             const response = await sendReport(email, type, description);
-            console.log(response);
+            document.getElementById('error').style.display = 'none';
         } catch (error) {
-            alert(error);
+            document.getElementById('reportError').textContent = 'A apărut o eroare. Vă rugăm să încercați din nou.';
+            document.getElementById('reportError').style.display = 'block';
         }
     } else {
-        alert('Email, type and description are required');
+        document.getElementById('reportError').textContent = 'Toate câmpurile sunt obligatorii';
+        document.getElementById('reportError').style.display = 'block';
     }
 });
