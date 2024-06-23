@@ -4,7 +4,7 @@ import fs from "fs";
 import { fetchAppProperties } from "../shared.js";
 
 const baseResourcesUri = 'https://data.gov.ro/dataset/somajul-inregistrat';
-const baseDestinationDirectory = '../../data'
+const baseDestinationDirectory = 'data'
 var lastStoredMonth;
 var lastStoredYear;
 var monthsToGoBack;
@@ -82,18 +82,19 @@ async function downloadDatasets(month, year, monthsCount) {
 
     while (monthsToGoBack > 0) {
         const resourceUri = `${baseResourcesUri}-${MMtoMonth[lastStoredMonth]}-${lastStoredYear}`;
-        const resourcesPage = await axios.get(resourceUri);
-        if (resourcesPage.status != 200) {
-            return `Eroare: Nu s-a putut accesa pagina ${resourceUri}`;
-        }
-        const datasetUris = getDatasetsUrisFromPage(resourcesPage.data);
-        for (const datasetUri of datasetUris) {
-            const successStatus = await downloadSingleDataset(datasetUri);
-            if (successStatus == "Success") {
-                datasetsDownloaded++;
-            } else {
-                return successStatus;
+        try {
+            const resourcesPage = await axios.get(resourceUri);
+            const datasetUris = getDatasetsUrisFromPage(resourcesPage.data);
+            for (const datasetUri of datasetUris) {
+                const successStatus = await downloadSingleDataset(datasetUri);
+                if (successStatus == "Success") {
+                    datasetsDownloaded++;
+                } else {
+                    return successStatus;
+                }
             }
+        } catch (error) {
+            return `Eroare: Nu s-a putut accesa pagina ${resourceUri}`;
         }
 
         lastStoredMonth--;
@@ -104,7 +105,7 @@ async function downloadDatasets(month, year, monthsCount) {
         monthsToGoBack--;
     }
     if (errorOccured == "") {
-        console.log(`Descărcat cu succes ${datasetsDownloaded} dataset-uri`);
+        return `Descărcat cu succes ${datasetsDownloaded} dataset-uri`;
     }
 }
 

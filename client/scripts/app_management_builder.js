@@ -9,31 +9,41 @@ function getNewMonthsCount() {
 }
 
 async function handleAppUpdate() {
+    const infoMessage = document.getElementById('appUpdateError');
     const newMonth = getNewMonth();
     const newMonthsCount = getNewMonthsCount();
     if (!newMonth || !newMonthsCount) {
-        document.getElementById('appUpdateError').textContent = 'Introduceți luna și numărul de luni!';
-        document.getElementById('appUpdateError').style.display = 'block';
+        infoMessage.textContent = 'Introduceți luna și numărul de luni!';
+        infoMessage.style.display = 'block';
         return;
     }
     const regex = /^(0[1-9]|1[0-2])\/\d{4}$/;
     if (!regex.test(newMonth)) {
-        document.getElementById('appUpdateError').textContent = 'Introduceți o lună validă în formatul LL/YYYY!';
-        document.getElementById('appUpdateError').style.display = 'block';
+        infoMessage.textContent = 'Introduceți o lună validă în formatul LL/YYYY!';
+        infoMessage.style.display = 'block';
         return;
     }
     if (newMonthsCount < 12) {
-        document.getElementById('appUpdateError').textContent = 'Numărul de luni nu poate fi mai mic decât 12!';
-        document.getElementById('appUpdateError').style.display = 'block';
+        infoMessage.textContent = 'Numărul de luni nu poate fi mai mic decât 12!';
+        infoMessage.style.display = 'block';
         return;
     }
     const [month, year] = newMonth.split('/');
-    const status = await updateApp(month, year, newMonthsCount);
-    if (status === 'Succes') {
+    infoMessage.style.color = 'black';
+    infoMessage.textContent = 'Se încearcă actualizarea cu date de pe data.gov.ro... Vă rugăm așteptați!';
+    infoMessage.style.display = 'block';
+    const result = await updateApp(month, year, newMonthsCount);
+    if (result.status === 200) {
+        infoMessage.style.color = 'green';
+        infoMessage.textContent = 'Actualizare reușită!';
+        await new Promise(resolve => setTimeout(resolve, 1000));
         location.reload();
     } else {
-        document.getElementById('appUpdateError').textContent = status;
-        document.getElementById('appUpdateError').style.display = 'block';
+        const resultText = await result.text();
+        const errorResult = JSON.parse(resultText);
+        infoMessage.style.color = 'red';
+        infoMessage.textContent = errorResult.error;
+        infoMessage.style.display = 'block';
     }
 }
 

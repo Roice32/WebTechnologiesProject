@@ -116,6 +116,7 @@ async function patchDatabase(parameters, res) {
     if (downloadResult.includes('Eroare')) {
         res.writeHead(500, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: downloadResult }));
+        return;
     }
     /*const updateResult = await updateDatabaseFromDatasets();
     if (updateResult.includes('Eroare')) {

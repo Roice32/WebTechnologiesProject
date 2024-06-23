@@ -77,5 +77,5 @@ export async function updateApp(month, year, monthsCount) {
         },
         body: JSON.stringify(parameters)
     });
-    return response.status;
+    return response;
 }

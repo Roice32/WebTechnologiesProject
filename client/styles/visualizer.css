@@ -75,7 +75,6 @@
 
 #monthsLabels li {
     padding: 5px;
-    width: 5%;
     font-weight: 600;
     border: 2px solid rgb(32, 161, 149);
     background-color: rgb(141, 228, 219);
@@ -92,6 +91,7 @@
 }
 
 .exclusiveSingleOption {
+    text-align: center;
     max-width: 90%;
     max-height: 90%;
     font-weight: 600;
@@ -117,7 +117,6 @@
     display: inline-block;
     position: relative;
     left: -5px;
-    top: -5px;
     width: 15px;
     height: 15px;
     border: 3px solid rgb(0, 0, 0);
