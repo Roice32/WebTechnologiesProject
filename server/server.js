@@ -2,7 +2,6 @@ import http from 'http';
 import handleRequest from './api/request_handler.js';
 
 const server = http.createServer(async (req, res) => {
-    console.log(req.url + ' ' + req.method);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Request-Method', '*');
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');

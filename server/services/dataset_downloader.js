@@ -1,13 +1,11 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import fs from "fs";
-import { fetchAppProperties } from "../shared.js";
 
 const baseResourcesUri = 'https://data.gov.ro/dataset/somajul-inregistrat';
-const baseDestinationDirectory = '../../data'
-var lastStoredMonth;
-var lastStoredYear;
-var monthsToGoBack;
+var month;
+var year;
+var monthsCount;
 
 const MMtoMonth = [
     'nonexistent',
@@ -42,7 +40,7 @@ function getDatasetNameFromUri(uri) {
 
 function buildDestinationFile(datasetUri) {
     const datasetName = getDatasetNameFromUri(datasetUri);
-    var destinationDirectory = `${baseDestinationDirectory}`;
+    var destinationDirectory = 'data';
     const datasetType = datasetName.split('.')[0];
     if (datasetType.includes('rata')) {
         destinationDirectory += '/rate';
@@ -55,7 +53,7 @@ function buildDestinationFile(datasetUri) {
     } else {
         return `Eroare: Tip necunoscut de dataset: ${datasetType}`;
     }
-    destinationDirectory += `/${lastStoredYear}-${lastStoredMonth.toString().padStart(2, '0')}.csv`;
+    destinationDirectory += `/${year}-${month.toString().padStart(2, '0')}.csv`;
     return destinationDirectory;
 }
 
@@ -73,38 +71,40 @@ async function downloadSingleDataset(datasetUri) {
     return "Success";
 }
 
-async function downloadDatasets(month, year, monthsCount) {
-    lastStoredMonth = Number(month);
-    lastStoredYear = Number(year);
-    monthsToGoBack = Number(monthsCount);
+async function downloadDatasets(parameters) {
+    year = Number(parameters.year);
+    month = Number(parameters.month);
+    monthsCount = Number(parameters.monthsCount);
     var datasetsDownloaded = 0;
     var errorOccured = "";
 
-    while (monthsToGoBack > 0) {
-        const resourceUri = `${baseResourcesUri}-${MMtoMonth[lastStoredMonth]}-${lastStoredYear}`;
-        const resourcesPage = await axios.get(resourceUri);
-        if (resourcesPage.status != 200) {
+    while (monthsCount > 0) {
+        const resourceUri = `${baseResourcesUri}-${MMtoMonth[month]}-${year}`;
+        try {
+            const resourcesPage = await axios.get(resourceUri);
+            const datasetUris = getDatasetsUrisFromPage(resourcesPage.data);
+            for (const datasetUri of datasetUris) {
+                const successStatus = await downloadSingleDataset(datasetUri);
+                if (successStatus === "Success") {
+                    datasetsDownloaded++;
+                } else {
+                    return successStatus;
+                }
+            }
+        } catch (error) {
+            console.log(error);
             return `Eroare: Nu s-a putut accesa pagina ${resourceUri}`;
         }
-        const datasetUris = getDatasetsUrisFromPage(resourcesPage.data);
-        for (const datasetUri of datasetUris) {
-            const successStatus = await downloadSingleDataset(datasetUri);
-            if (successStatus == "Success") {
-                datasetsDownloaded++;
-            } else {
-                return successStatus;
-            }
-        }
 
-        lastStoredMonth--;
-        if (lastStoredMonth == 0) {
-            lastStoredMonth = 12;
-            lastStoredYear--;
+        month--;
+        if (month == 0) {
+            month = 12;
+            year--;
         }
-        monthsToGoBack--;
+        monthsCount--;
     }
     if (errorOccured == "") {
-        console.log(`Descărcat cu succes ${datasetsDownloaded} dataset-uri`);
+        return `Descărcat cu succes ${datasetsDownloaded} dataset-uri`;
     }
 }
 
