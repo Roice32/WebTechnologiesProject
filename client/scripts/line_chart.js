@@ -5,7 +5,6 @@ export function generateLineChart(ctx, labels, itemData) {
         datasets: [{
             data: itemData,
             borderColor: 'rgb(232, 156, 35)',
-            fill: false
         }]
     };
     
@@ -13,34 +12,33 @@ export function generateLineChart(ctx, labels, itemData) {
         type: 'line',
         data: data,
         options: {
-            plugins: {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: false,
-                    text: 'Line Chart'
-                }
-            },
             responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                display: false
+            },
+            title: {
+                display: false,
+                text: 'Line Chart'
+            },
             scales: {
-                y: {
-                    beginAtZero: true,
+                yAxes: [{
                     ticks: {
-                        color: 'black',   
-                        font: {
-                            weight: 'bold',   
-                        }
+                        beginAtZero: true,
+                        fontColor: 'black',  
+                        fontSize: 14,
+                        fontFamily: 'Arial',      
+                        fontStyle: 'bold'   
                     }
-                },
-                x: {
+                }],
+                xAxes: [{
                     ticks: {
-                        color: 'black',   
-                        font: {
-                            weight: 'bold',  
-                        }
+                        fontColor: 'black', 
+                        fontSize: 14,
+                        fontFamily: 'Arial',         
+                        fontStyle: 'bold'      
                     }
-                }
+                }]
             }
         }
     };

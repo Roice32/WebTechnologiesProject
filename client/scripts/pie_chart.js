@@ -14,24 +14,21 @@ export function generatePieChart(ctx, labels, itemData) {
         type: 'pie',
         data: data,
         options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'black',
-                        font: {
-                            size: 14,  
-                            family: 'Arial',  
-                            weight: 'bold',  
-                        }
-                    }
-                },
-                title: {
-                    display: false,
-                    text: 'Pie Chart'
+            responsive: true,
+            maintainAspectRatio: false, 
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: 'black',  
+                    fontSize: 14,   
+                    fontFamily: 'Arial',   
+                    fontStyle: 'bold'   
                 }
             },
-            responsive: true
+            title: {
+                display: false,
+                text: 'Pie Chart'
+            }
         }
     };
 

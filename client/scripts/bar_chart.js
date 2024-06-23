@@ -13,34 +13,33 @@ export function generateBarChart(ctx, labels, itemData) {
         type: 'bar',
         data: data,
         options: {
-            plugins: {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: false,
-                    text: 'Bar Chart'
-                }
-            },
             responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                display: false
+            },
+            title: {
+                display: false,
+                text: 'Bar Chart'
+            },
             scales: {
-                y: {
-                    beginAtZero: true,
+                yAxes: [{
                     ticks: {
-                        color: 'black',   
-                        font: {
-                            weight: 'bold',   
-                        }
+                        beginAtZero: true,
+                        fontColor: 'black', 
+                        fontSize: 14,
+                        fontFamily: 'Arial',   
+                        fontStyle: 'bold'      
                     }
-                },
-                x: {
+                }],
+                xAxes: [{
                     ticks: {
-                        color: 'black',   
-                        font: {
-                            weight: 'bold',  
-                        }
+                        fontColor: 'black', 
+                        fontSize: 14,
+                        fontFamily: 'Arial',  
+                        fontStyle: 'bold' 
                     }
-                }
+                }]
             }
         }
     };
