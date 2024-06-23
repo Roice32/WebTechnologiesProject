@@ -3,6 +3,7 @@ import { generateBarChart } from "./bar_chart.js";
 import { generateLineChart } from "./line_chart.js";
 import { generatePieChart } from "./pie_chart.js";
 import { exportAsCsv, exportAsSvg, exportAsPdf } from "./export_chart.js";
+import { generateMapVisualization } from "./map_generator.js";
 
 function getSelectedMonthsCount() {
     return parseInt(document.getElementById('timePeriod').value);
@@ -76,7 +77,15 @@ document.getElementById('applyButton').addEventListener('click', async () => {
             if (currentChart !== null) {
                 currentChart.destroy();
             }
-            if (criterion === 'gender') {
+            if(selectedType === 'map') {
+                document.getElementById('chartCanvas').style.display = 'none';
+                document.getElementById('romaniaMap').style.display = 'block';
+                generateMapVisualization(response, counties);
+            }
+            else {
+                document.getElementById('chartCanvas').style.display = 'block';
+                document.getElementById('romaniaMap').style.display = 'none';
+                if (criterion === 'gender') {
                 switch (selectedType) {
                     case 'pie':
                         currentChart = generatePieChart(canvas, labels.slice(0, 4), data.slice(0, 4));
@@ -90,22 +99,23 @@ document.getElementById('applyButton').addEventListener('click', async () => {
                     default:
                         console.error('Unknown chart type selected');
                 }
-            }
-            else {
-                switch (selectedType) {
-                    case 'pie':
-                        currentChart = generatePieChart(canvas, labels, data);
-                        break;
-                    case 'bar':
-                        currentChart = generateBarChart(canvas, labels, data);
-                        break;
-                    case 'graph':
-                        currentChart = generateLineChart(canvas, labels, data);
-                        break;
-                    default:
-                        console.error('Unknown chart type selected');
+            } else {
+                    switch (selectedType) {
+                        case 'pie':
+                            currentChart = generatePieChart(canvas, labels, data);
+                            break;
+                        case 'bar':
+                            currentChart = generateBarChart(canvas, labels, data);
+                            break;
+                        case 'graph':
+                            currentChart = generateLineChart(canvas, labels, data);
+                            break;
+                        default:
+                            console.error('Unknown chart type selected');
+                    }
                 }
             }
+            
         } catch (error) {
             alert(error);
         }
@@ -116,6 +126,11 @@ document.getElementById('applyButton').addEventListener('click', async () => {
 
 document.getElementById("downloadButton").addEventListener("click", function() {
     const selectedFormat = document.querySelector('input[name="fileFormat"]:checked').value;
+    const selectedType = document.querySelector('input[name="visualizationType"]:checked').value;
+    if(selectedType === 'map') {
+        alert('Cannot export map!');
+        return;
+    }
     if (currentChart !== null) {
         switch (selectedFormat) {
             case 'csv':
