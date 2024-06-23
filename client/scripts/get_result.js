@@ -28,16 +28,31 @@ function extractLabelAndData(response) {
     for(const [county, values] of response) {
         for(const column in values) {
             if (column !== 'total') {
-                if (!labels.includes(column)) {
-                    labels.push(column);
-                    data.push(0);
+                if(column === 'profesional_arte_si_meserii'){
+                    if (!labels.includes('profesional')) {
+                        labels.push('profesional');
+                        data.push(0);
+                    }
+                }
+                else {
+                    if (!labels.includes(column)) {
+                        labels.push(column);
+                        data.push(0);
+                    }
                 }
             }
         }
     }
     for(const [county, values] of response) {
-        for(const column in values) {
-            data[labels.indexOf(column)] += values[column];
+        if(!county.includes('Total') && !county.includes('TOTAL')) {
+            for(const column in values) {
+                if(column === 'profesional_arte_si_meserii'){
+                    data[labels.indexOf('profesional')] += values[column];
+                }
+                else {
+                    data[labels.indexOf(column)] += values[column];
+                }
+            }
         }
     }
     return { labels, data };
@@ -61,19 +76,35 @@ document.getElementById('applyButton').addEventListener('click', async () => {
             if (currentChart !== null) {
                 currentChart.destroy();
             }
-
-            switch (selectedType) {
-                case 'pie':
-                    currentChart = generatePieChart(canvas, labels, data);
-                    break;
-                case 'bar':
-                    currentChart = generateBarChart(canvas, labels, data);
-                    break;
-                case 'graph':
-                    currentChart = generateLineChart(canvas, labels, data);
-                    break;
-                default:
-                    console.error('Unknown chart type selected');
+            if (criterion === 'gender') {
+                switch (selectedType) {
+                    case 'pie':
+                        currentChart = generatePieChart(canvas, labels.slice(0, 4), data.slice(0, 4));
+                        break;
+                    case 'bar':
+                        currentChart = generateBarChart(canvas, labels.slice(0, 4), data.slice(0, 4));
+                        break;
+                    case 'graph':
+                        currentChart = generateLineChart(canvas, labels.slice(0, 4), data.slice(0, 4));
+                        break;
+                    default:
+                        console.error('Unknown chart type selected');
+                }
+            }
+            else {
+                switch (selectedType) {
+                    case 'pie':
+                        currentChart = generatePieChart(canvas, labels, data);
+                        break;
+                    case 'bar':
+                        currentChart = generateBarChart(canvas, labels, data);
+                        break;
+                    case 'graph':
+                        currentChart = generateLineChart(canvas, labels, data);
+                        break;
+                    default:
+                        console.error('Unknown chart type selected');
+                }
             }
         } catch (error) {
             alert(error);
@@ -91,7 +122,7 @@ document.getElementById("downloadButton").addEventListener("click", function() {
                 exportAsCsv(currentChart, counties);
                 break;
             case 'svg':
-                exportAsSvg(currentChart);
+                exportAsSvg(currentChart, 'chart.svg');
                 break;
             case 'pdf':
                 exportAsPdf(currentChart, counties);
