@@ -2,7 +2,7 @@ export function generateMapVisualization(response, selectedCounties) {
     const svgMap = document.getElementById('romaniaMap');
     const infoBox = document.getElementById('infoBox');
 
-    // Clear previous event listeners
+     
     svgMap.querySelectorAll('path').forEach(path => {
         path.replaceWith(path.cloneNode(true));
     });
