@@ -23,11 +23,6 @@ async function handleAppUpdate() {
         infoMessage.style.display = 'block';
         return;
     }
-    if (newMonthsCount < 12) {
-        infoMessage.textContent = 'Numărul de luni nu poate fi mai mic decât 12!';
-        infoMessage.style.display = 'block';
-        return;
-    }
     const [month, year] = newMonth.split('/');
     infoMessage.style.color = 'black';
     infoMessage.textContent = 'Se încearcă actualizarea cu date de pe data.gov.ro... Vă rugăm așteptați!';

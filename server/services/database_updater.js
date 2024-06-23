@@ -1,6 +1,5 @@
 import fs from 'fs';
 import connectionPool from '../db_connection.js';
-import { fetchAppProperties } from '../shared.js';
 
 const datasetTypes = ['medii', 'rate', 'nivele_educatie', 'varste'];
 const queries = new Map([
@@ -79,7 +78,7 @@ function getRidOfQuotes(row) {
 async function updateTable(table, year, month) {
     const insertOrUpdateQuery = queries.get(table);
     const yearAndMonth = getYearAndMonth(year, month);
-    const datasetPath = `../../data/${table}/${yearAndMonth}.csv`;
+    const datasetPath = `data/${table}/${yearAndMonth}.csv`;
     var rowsModified = 0;
     const dbConnection = await connectionPool.connect();
     try {
@@ -102,28 +101,31 @@ async function updateTable(table, year, month) {
         return `${rowsModified} rows modified successfully in '${table}' table for ${yearAndMonth} dataset.`;
     } catch (error) {
         dbConnection.query('ROLLBACK');
-        console.log(`Eroare la actualizarea tabelului '${table}' cu ${datasetPath}: ${error}`);
+        return `Eroare la actualizarea tabelului '${table}' cu ${datasetPath}: ${error}`;
     } finally {
         dbConnection.release();
     }
 }
 
-async function updateDatabaseFromDatasets() {
-    var { lastStoredYear, lastStoredMonth, monthsToGoBack } = fetchAppProperties();
-    while (monthsToGoBack > 0) {
+async function updateDatabaseFromDatasets(parameters) {
+    var year = Number(parameters.year);
+    var month = Number(parameters.month);
+    var monthsCount = Number(parameters.monthsCount);
+    while (monthsCount > 0) {
         for (const table of datasetTypes) {
-            const result = await updateTable(table, lastStoredYear, lastStoredMonth);
-            if (result.includes('Eroare')) {
+            const result = await updateTable(table, year, month);
+            if (result.startsWith('Eroare')) {
                 return result;
             }
         }
-        lastStoredMonth--;
-        if (lastStoredMonth == 0) {
-            lastStoredMonth = 12;
-            lastStoredYear--;
+        month--;
+        if (month == 0) {
+            month = 12;
+            year--;
         }
-        monthsToGoBack--;
+        monthsCount--;
     }
+    return 'Succes';
 }
 
 export default updateDatabaseFromDatasets;

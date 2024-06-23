@@ -13,7 +13,7 @@ async function buildTimePeriodSlider() {
     for (var i = 1; i <= monthsToGoBack; i++) {
         const label = document.createElement('li');
         label.innerHTML = '🞁<br>' + i;
-        label.style.width = 'calc(100% / ' + monthsToGoBack + ' - 1)';
+        label.style.width = 'calc(100% / ' + monthsToGoBack + ')';
         monthsLabels.appendChild(label);
     }
 }

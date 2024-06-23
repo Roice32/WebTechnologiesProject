@@ -19,7 +19,7 @@ async function showAdminPanel() {
 }
 
 async function displayAdminPage() {
-    if (localStorage.getItem('admin')) {
+    if (localStorage.getItem('adminToken')) {
         await showAdminPanel();
     } else {
         await showLogin();

@@ -17,8 +17,8 @@ function handleLoginResponse(responseBody) {
     if (responseBody.error) {
         setErrorMessage(responseBody.error);
     } else {
-        localStorage.setItem('admin', getUsername());
-        window.location.href = 'admin.html';
+        localStorage.setItem('adminToken', responseBody.adminToken);
+        location.reload();
     }
 }
 

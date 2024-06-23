@@ -50,7 +50,7 @@
                 <label for="newLastStoredMonth">Nouă ultimă lună stocată:</label>
                 <input type="text" id="newLastStoredMonth" name="newLastStoredMonth" placeholder="LL/YYYY" required>
                 <label for="newMonthsCount">Nou nr. luni memorate:</label>
-                <input type="number" id="newMonthsCount" name="newMonthsCount" placeholder="N>=12" required>
+                <input type="number" id="newMonthsCount" name="newMonthsCount" placeholder="N>0" min="1" required>
             </div>
             <h2 class="errorMessage" id="appUpdateError"></h2>
             <button class="actionButton" id="updateAppButton">Încearcă actualizare</button>

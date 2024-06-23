@@ -1,4 +1,4 @@
 document.getElementById('logoutButton').addEventListener('click', async () => {
-    localStorage.removeItem('admin');
+    localStorage.removeItem('adminToken');
     location.reload();
 });

@@ -28,21 +28,26 @@ document.getElementById('submitReport').addEventListener('click', async () => {
     const email = getEmail();
     const type = getProblemType();
     const description = getDescription();
+    const infoMessage = document.getElementById('reportError');
+    infoMessage.style.display = 'none';
+    infoMessage.style.color = 'red';
     if (email && type !== -1 && description) {
         if (!validEmail(email)) {
-            document.getElementById('reportError').textContent = 'Email invalid';
-            document.getElementById('reportError').style.display = 'block';
+            infoMessage.textContent = 'Email invalid';
+            infoMessage.style.display = 'block';
             return;
         }
         try {
             const response = await sendReport(email, type, description);
-            document.getElementById('error').style.display = 'none';
+            infoMessage.style.color = 'green';
+            infoMessage.textContent = JSON.parse(response).message;
+            infoMessage.style.display = 'block';
         } catch (error) {
-            document.getElementById('reportError').textContent = 'A apărut o eroare. Vă rugăm să încercați din nou.';
-            document.getElementById('reportError').style.display = 'block';
+            infoMessage.textContent = 'A apărut o eroare. Vă rugăm să încercați din nou.';
+            infoMessage.style.display = 'block';
         }
     } else {
-        document.getElementById('reportError').textContent = 'Toate câmpurile sunt obligatorii';
-        document.getElementById('reportError').style.display = 'block';
+        infoMessage.textContent = 'Toate câmpurile sunt obligatorii';
+        infoMessage.style.display = 'block';
     }
 });
