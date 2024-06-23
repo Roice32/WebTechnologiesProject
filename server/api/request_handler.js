@@ -20,7 +20,7 @@ export default async function handleRequest(req, res) {
     var parameters;
     if (methodType === 'GET')
         parameters = requestUrl.query;
-    else if (methodType === 'POST')
+    else if (methodType === 'POST' || methodType === 'PATCH')
         parameters = JSON.parse(await getRequestBody(req));
     else
         parameters = {};

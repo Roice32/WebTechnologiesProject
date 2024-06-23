@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <script src="../scripts/admin_page_controller.js" type="module"></script>
+    <link rel="stylesheet" href="../styles/shared.css">
+    <link rel="stylesheet" href="../styles/forms_shared.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="icon" type="image/png" href="../images/UnXNoBG.png">
+    <title>UnX - Administrativ</title>
+</head>
+
+<body>
+    <header>
+        <div class="navBar">
+            <img class="logo" src="../images/UnxNoBG.png" alt="Logo">
+            <ul>
+                <li><a class="button" href="index.html">Acasă</a></li>
+                <li><a class="button" href="visualizer.html">Vizualizator</a></li>
+                <li><a class="button" href="report.html">Asistență</a></li>
+                <li><a class="button" href="admin.html">Administrativ</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="formBox" id="loginForm">
+            <h1>Conectează-te ca administrator!</h1>
+            <form class="form">
+                <label for="username">Nume:</label>
+                <input type="text" id="username" name="username" placeholder="Nume administrator" required>
+                <label for="password">Parolă:</label>
+                <input type="password" id="password" name="password" placeholder="Parolă" required>
+            </form>
+            <h2 class="errorMessage" id="loginError"></h2>
+            <button type="submit" class="actionButton" id="loginButton">Conectare</button>
+            <script src="../scripts/login.js" type="module"></script>
+        </div>
+        <button class="actionButton" id="logoutButton">Deconectare</button>
+        <script src="../scripts/logout.js" type="module"></script>
+        <div id="appManagementPanel">
+            <h1>Informații aplicație</h1>
+            <div class="appInfoRow">
+                <label for="lastStoredMonth">Ultima lună stocată:</label>
+                <span id="lastStoredMonth"></span>
+                <label for="monthsCount">Nr. luni memorate:</label>
+                <span id="monthsCount"></span>
+            </div>
+            <div class="appInfoRow">
+                <label for="newLastStoredMonth">Nouă ultimă lună stocată:</label>
+                <input type="text" id="newLastStoredMonth" name="newLastStoredMonth" placeholder="LL/YYYY" required>
+                <label for="newMonthsCount">Nou nr. luni memorate:</label>
+                <input type="number" id="newMonthsCount" name="newMonthsCount" placeholder="N>=12" required>
+            </div>
+            <h2 class="errorMessage" id="appUpdateError"></h2>
+            <button class="actionButton" id="updateAppButton">Încearcă actualizare</button>
+        </div>
+        <div id="openReportsPanel">
+            <div id="openReports">
+                <h1>Rapoarte în așteptare</h2>
+                <div id="openReportsSection"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 UnX. Butnaru Alexandru, Morarasu Catalin-Dimitrie 2B4. FII UAIC 2024</p>
+    </footer>
+</body>
+
+</html>

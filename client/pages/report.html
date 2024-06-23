@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../styles/shared.css">
+        <link rel="stylesheet" href="../styles/forms_shared.css">
         <link rel="stylesheet" href="../styles/report.css">
         <link rel="icon" type="image/png" href="../images/UnXNoBG.png">
         <title>UnX - Raportează</title>
@@ -14,14 +15,15 @@
                     <ul>
                         <li><a class="button" href="index.html">Acasă</a></li>
                         <li><a class="button" href="visualizer.html">Vizualizator</a></li>
-                        <li><a class="button" href="report.html">Asistență</a></li>             
+                        <li><a class="button" href="report.html">Asistență</a></li>  
+                        <li><a class="button" href="admin.html">Administrativ</a></li>                 
                     </ul>  
             </div>
         </header>
         <main>
             <div class="formBox"> 
                 <h1>Raporteaza o problemă!</h1>
-                <form class="reportForm">
+                <form class="form">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Email" required>
             
@@ -36,6 +38,7 @@
                     <textarea id="report" name="report" rows="4" cols="50" required></textarea>
             
                 </form>
+                <h2 class="errorMessage" id="reportError"></h2>
                 <button type="submit" class="actionButton" id="submitReport">Trimite</button>
                 <script src="../scripts/send_report.js" type="module"></script>
             </div>
