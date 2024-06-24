@@ -131,7 +131,7 @@
                     de
                     specifica cerințele aplicației web. Această aplicație
                     va oferi utilizatorilor posibilitatea de a vizualiza și compara pe diferite criterii datele publice 
-                    referitoare la șomajul din România pe ultimele 12 luni. Statisticile pot fi vizualizate sub forma de grafice,
+                    referitoare la șomajul din România pe minim ultimele 12 luni. Statisticile pot fi vizualizate sub forma de grafice,
                     diagrame circulare, grafice de bare, precum și printr-o reprezentare cartografică pe harta României.
                 </p>
             </section>
@@ -185,7 +185,7 @@
             <h4>2.1 Perspectiva produsului</h4>
             <p>UnX (Unemployment explorer) este o aplicație dezvoltată în cadrul cursului de Tehnologii Web,
                 menită să
-                ofere posibilitatea de a vizualiza date și statistici despre rata șomajului din România din ultimele 12 luni.
+                ofere posibilitatea de a vizualiza date și statistici despre rata șomajului din România din minim ultimele 12 luni.
         </section>
         <section id="product-functions">
             <h4>2.2 Funcționalitățile produsului</h4>
@@ -197,9 +197,12 @@
                 <li>în cadrul paginii "Vizualizator", să selecteze criteriul după care să fie afișate datele</li>
                 <li>în cadrul paginii "Vizualizator", să selecteze Județele din care să fie afișate datele</li>
                 <li>în cadrul paginii "Vizualizator", să selecteze tipul de vizualizare a datelelor</li>
-                <li>în cadrul paginii "Vizualizator", să exporteze rezultatul primit</li>
+                <li>în cadrul paginii "Vizualizator", să selecteze tipul de export și să exporteze rezultatul primit</li>
                 <li>să acceseze pagina "Asistență" pentru a realiza un raport în legătura cu problemele tehnice sau
                     a datelor și corectitudinea acestora
+                </li>
+                <li>să acceseze pagina "Administrativ" unde se poate conecta cu un cont de administrator. În urma conectării poate modifica perioada din care
+                    din care sunt preluate datele și poate consulta rapoartele primite de la ceilalți utilizatori.
                 </li>
             </ul>
         </section>
@@ -214,11 +217,13 @@
                 <li>Publicații care doresc sa realizeze un reportaj pe baza rezultatelor</li>
             </ul>
             <h5>2.3.2 Caracteristici</h5>
-            <p>Utilizatorii au acces la <b>toate</b> paginile și funcționalitățile site-ului. Pot <b>vizualiza</b> 
+            <p>Utilizatorii <b>nu au acces la toate</b> paginile și funcționalitățile site-ului. Pot <b>vizualiza</b> 
                 datele în diferite
                 moduri(grafice, diagrame circulare, grafice de bare și cartografic pe o hartă a României) și 
                 pot <b>exporta</b> rezultatele în format CSV, PDF sau SVG. totodată utilizatorii pot raporta eventualele
                 probleme tehnice sau cele ce au legătură cu corectitudinea datelor pe pagina ”Asistență”.
+                În schimb aceștia <b>nu au</b> acces garantat la pagina de administrare a datelor si a rapoartelor, unde
+                accesul se face pe baza unui cont de administrator.
             </p>
         </section>
         <section id="operating-environment">
@@ -249,7 +254,7 @@
                 <li>Aceasta reprezintă meniul de navigare către fiecare pagina a aplicației. Acesta este prezent 
                     pe fiecare pagina și are o poziție fixă indiferent de scroll.
                 </li>
-                <li class="pictures" style="list-style: none"><img alt="login" src="docs/navBar.png" width=800
+                <li class="pictures" style="list-style: none"><img alt="login" src="docs/navBarNew.png" width=800
                 ></li>
                 </ul>
             </li>
@@ -257,7 +262,7 @@
             <li style="list-style: none">
                 <ul>
                 <li>Pagina are rolul de prezenta o scurtă descriere a site-ului și modalitățile de vizualizare a datelor</li>
-                <li class="pictures" style="list-style: none"><img alt="overview" src="docs/homePage.png"
+                <li class="pictures" style="list-style: none"><img alt="overview" src="docs/homePageNew.png"
                                            width=800>
                 </li>
                 <li class="pictures" style="list-style: none"><img alt="overview" src="docs/homePage2.png"
@@ -271,27 +276,30 @@
                 <li>Pagina oferă posibilitatea utilizatorului datele despre rata șomajului din România pe 
                     ultimele 12 luni. Mai intâi acesta alege <b>perioada</b> pe care vor fi prelucrate datele
                 </li>
-                <li class="pictures" style="list-style: none"><img alt="period" src="docs/vizPage1.png"
+                <li class="pictures" style="list-style: none"><img alt="period" src="docs/vizPage1new.png"
                                            width=800>
                 </li>
                 <li>Apoi utilizatorul alege <b>criterul</b> după care vor fi afișate datele
                 </li>
-                <li class="pictures" style="list-style: none"><img alt="criteriu" src="docs/vizPage2.png"
+                <li class="pictures" style="list-style: none"><img alt="criteriu" src="docs/vizPage2new.png"
                                            width=800>
                 </li>
                 <li>Urmeaza slectarea <b>județelor</b> din care vor fi preluate datele.</li>
                 <li class="pictures" style="list-style: none"><img alt="judete"
-                                           src="docs/vizPage3.png" width=800>
+                                           src="docs/vizPage3new.png" width=800>
                 </li>
                 <li>Utilizatorul poate alege <b>tipul de vizualizare</b> a datelor</li>
-                <li class="pictures" style="list-style: none"><img alt="type" src="docs/vizPage4.png"
+                <li class="pictures" style="list-style: none"><img alt="type" src="docs/vizPage4new.png"
                                            width=800>
                 </li>
                 <li>În urma aplicării filtrelor, utilizatorul va primi rezultatul sub forma de grafic, diagramă
                     circulară, grafic de bare sau reprezentare cartografică pe harta României, în căsuța destinată
                     afișării rezultatelor.
                 </li>
-                <li class="pictures" style="list-style: none"><img alt="result" src="docs/vizPage5.png"
+                <li class="pictures" style="list-style: none"><img alt="result" src="docs/vizPage5new.png"
+                    width=800>  
+                </li>
+                <li class="pictures" style="list-style: none"><img alt="result" src="docs/vizPage5new2.png"
                     width=800>  
                 </li>
                 <li>La final utilizatorul poate <b>exporta</b> rezultatul primit</li>
@@ -307,6 +315,25 @@
                     tehnică sau o problemă legată de corectitudinea datelor.
                 </li>
                 <li class="pictures" style="list-style: none"><img alt="report" src="docs/reportPage.png"
+                                           width=800>
+                </li>
+                </ul>
+            </li>
+            <li id="report-page"><b>Pagina de Administratori</b></li>
+            <li style="list-style: none">
+                <ul>
+                <li>La început pagina oferă posibilitatea de a te conecta cu un cont de administrator.
+                </li>
+                <li class="pictures" style="list-style: none"><img alt="report" src="docs/adminPage1.png"
+                                           width=800>
+                </li>
+                <li>În urma conectării, administratorii au posibilitatea de a schimba perioada din care pot fi preluate datele 
+                sau de a verifica rapoartele trimise de ceilalți utilizatori.
+                </li>
+                <li class="pictures" style="list-style: none"><img alt="report" src="docs/adminPage2.png"
+                                           width=800>
+                </li>
+                <li class="pictures" style="list-style: none"><img alt="report" src="docs/adminPage3.png"
                                            width=800>
                 </li>
                 </ul>
@@ -339,9 +366,9 @@
                 <section id="accessing-features">
                     <h4>4.1 Accesarea informațiilor oferite de site</h4>
                     <h5 id="accessing-features-1">4.1.1 Descriere și generalități</h5>
-                        Fiind o aplicație web cu singurul scop de a oferi informații la cerere, experiența de utilizare este una simplistă: <b>utilizatorii</b> nu au nevoie de cont pentru a putea interoga aplicația pentru statisticile dorite. 
+                        Fiind o aplicație web cu singurul scop de a oferi informații la cerere, experiența de utilizare este una simplistă: <b>utilizatorii</b> nu au nevoie de cont pentru a putea interoga aplicația pentru statisticile dorite. <b>Utilizatorii</b> se pot conecta doar cu un cont de administrator.
                     <h5 id="accessing-features-2">4.1.2 Actualizarea informațiilor</h5>
-                        <b>Utilizatorii</b> nu au posibilitatea de a actualiza datele & statisticile primite din motive de integritate și factualitate a informațiilor.
+                        <b>Utilizatorii</b> nu au posibilitatea de a actualiza datele & statisticile primite din motive de integritate și factualitate a informațiilor. <b>Administratorii</b> conectați au doar posibilitatea de a modifica perioada din care sunt preluate datele și de a verifica rapoartele trimise de utilizatori.
                     <h5 id="accessing-features-3">4.1.3 Condiții de funcționare</h5>
                         Oricine cu acces la un browser web (fie Desktop, fie Mobile) și o conexiune la internet poate accesa funcționalitățile oferite de site.
                 </section>
@@ -351,7 +378,7 @@
                     Oferă <b>utilizatorilor</b> posibilitatea de a seta parametrii doriți în cadrul statisticii solicitate:
                     <ul>
                         <li>
-                            Perioada de timp pentru care se doresc informațiile: ultimele <b>3 luni, 6 luni, 9 luni,</b> sau <b>12 luni</b>;
+                            Perioada de timp pentru care se doresc informațiile: ultimele <b>12 luni</b>, fiecare utilizator având posibilitatea să-și aleaga exact câte luni dorește;
                         </li>
                         <li>
                             Criteriul de grupare: <b>mediul de rezidență, nivelul de educație, grupe de vârstă,</b> sau <b>genul</b> șomerilor;
@@ -371,7 +398,7 @@
                     <h5 id="export-1">4.3.1 Descriere și generalități</h5>
                         Secțiunea finală a paginii <i>„Vizualizator”</i> este destinată exportului (descărcării) rezultatelor primite în diverse formate: <b>CSV, PDF, SVG</b>.
                     <h5 id="export-2">4.3.2 Condiții de funcționare</h5>
-                        Această funcționalitate va exporta doar rezultatul curent afișat în pagina web. De aceea, este necesară realizarea unei noi interogări pentru a obține un rezultat.<br>
+                        Această funcționalitate va exporta doar rezultatul curent afișat în pagina web. De aceea, este necesară realizarea unei noi interogări pentru a obține un rezultat. <b>Harta</b> nu poate fi exportată, doar <b>graficul de bare, graficul de linii</b> și <b>diagrama circulară</b>.<br>
                         De asemenea, selectarea formatului este obligatorie.
                 </section>
                 <section id="report">
@@ -393,6 +420,32 @@
                         </ul>
                     <h5 id="report-3">4.4.3 Condiții de funcționare</h5>
                         Toate câmpurile formularului de raportare trebuie completate pentru a putea fi trimis.
+                </section>
+                <section id="admin">
+                    <h4>4.5 Secțiunea de <i>„Administrativ”</i></h4>
+                    <h5 id="report-1">4.5.1 Descriere și generalități</h5>
+                        <b>Utilizatorii</b> au posibilitatea de a se conecta cu un cont de administrator. Cât timp sunt conectați au posibilitatea de a selecta perioada din care datele sunt importate în baza de date sau de a vedea rapoartele trimise de ceilalți utilizatori.
+                    <h5 id="report-2">4.5.2 Mod de utilizare</h5>
+                        <b>Utilizatorii</b> vor completa:
+                        <ul>
+                            <li>
+                                Numele contului de administrator;
+                            </li>
+                            <li>
+                                Parola contului;
+                            </li>
+                        </ul>
+                        <b>După conectare</b>:
+                        <ul>
+                            <li>
+                                Modifica perioada preluării datelor, selectând noua ultimă lună, precum și noul număr de luni memorate;
+                            </li>
+                            <li>
+                                Citirea rapoartelor și închiderea acestora;
+                            </li>
+                        </ul>
+                    <h5 id="report-3">4.5.3 Condiții de funcționare</h5>
+                        Conectarea cu un cont valid de administrator.
                 </section>
             </section>
             <section id="non-functional">
