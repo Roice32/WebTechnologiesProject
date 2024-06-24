@@ -51,3 +51,5 @@ document.getElementById('submitReport').addEventListener('click', async () => {
         infoMessage.style.display = 'block';
     }
 });
+
+document.getElementById('reportError').style.display = 'none';
