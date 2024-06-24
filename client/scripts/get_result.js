@@ -71,7 +71,6 @@ document.getElementById('applyButton').addEventListener('click', async () => {
     if (monthsCount && criterion) {
         try {
             const response = await fetchData(monthsCount, criterion, counties);
-            console.log(response);
             const { labels, data } = extractLabelAndData(response);
             const canvas = document.getElementById('chartCanvas').getContext('2d');
             if (currentChart !== null) {
