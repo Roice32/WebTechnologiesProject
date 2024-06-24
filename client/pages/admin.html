@@ -32,7 +32,7 @@
                 <label for="password">Parolă:</label>
                 <input type="password" id="password" name="password" placeholder="Parolă" required>
             </form>
-            <h2 class="errorMessage" id="loginError"></h2>
+            <h2 class="errorMessage" id="loginError">Nicio eroare</h2>
             <button type="submit" class="actionButton" id="loginButton">Conectare</button>
             <script src="../scripts/login.js" type="module"></script>
         </div>
@@ -41,9 +41,9 @@
         <div id="appManagementPanel">
             <h1>Informații aplicație</h1>
             <div class="appInfoRow">
-                <label for="lastStoredMonth">Ultima lună stocată:</label>
+                <h2>Ultima lună stocată:</h2>
                 <span id="lastStoredMonth"></span>
-                <label for="monthsCount">Nr. luni memorate:</label>
+                <h2>Nr. luni memorate:</h2>
                 <span id="monthsCount"></span>
             </div>
             <div class="appInfoRow">
@@ -52,12 +52,12 @@
                 <label for="newMonthsCount">Nou nr. luni memorate:</label>
                 <input type="number" id="newMonthsCount" name="newMonthsCount" placeholder="N>0" min="1" required>
             </div>
-            <h2 class="errorMessage" id="appUpdateError"></h2>
+            <h2 class="errorMessage" id="appUpdateError">Nicio eroare</h2>
             <button class="actionButton" id="updateAppButton">Încearcă actualizare</button>
         </div>
         <div id="openReportsPanel">
             <div id="openReports">
-                <h1>Rapoarte în așteptare</h2>
+                <h1>Rapoarte în așteptare</h1>
                 <div id="openReportsSection"></div>
             </div>
         </div>
