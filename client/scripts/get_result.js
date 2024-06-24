@@ -126,8 +126,7 @@ document.getElementById('applyButton').addEventListener('click', async () => {
 
 document.getElementById("downloadButton").addEventListener("click", function() {
     const selectedFormat = document.querySelector('input[name="fileFormat"]:checked').value;
-    const selectedType = document.querySelector('input[name="visualizationType"]:checked').value;
-    if(selectedType === 'map') {
+    if(document.getElementById('romaniaMap').style.display === 'block') {
         alert('Cannot export map!');
         return;
     }
