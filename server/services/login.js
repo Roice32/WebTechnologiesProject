@@ -1,5 +1,6 @@
 import connectionPool from "../db_connection.js";
 import bcrypt from "bcrypt";
+import { generateToken } from "../jwt.js";
 
 export default async function login(username, password) {
     const selectQuery = `SELECT * FROM admini WHERE nume = $1`;
@@ -13,7 +14,8 @@ export default async function login(username, password) {
         const storedPasswordHash = admin.hash_parola;
         const match = await bcrypt.compare(password, storedPasswordHash);
         if (match) {
-            return('200');
+            const token = generateToken({admin: admin.nume});
+            return(token);
         } else {
             return('401');
         }

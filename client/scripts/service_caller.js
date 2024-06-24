@@ -1,3 +1,7 @@
+function getAdminToken() {
+    return localStorage.getItem('adminToken');
+}
+
 export async function fetchData(monthsCount, criterion, counties) {
     const parameters = new URLSearchParams({
         monthsCount,
@@ -38,7 +42,11 @@ export async function attemptLogin(username, password) {
 }
 
 export async function fetchOpenReports() {
-    const response = await fetch('http://localhost:2048/api/open-reports');
+    const response = await fetch('http://localhost:2048/api/open-reports', {
+        headers: {
+            'Authorization': `Bearer ${getAdminToken()}`
+        }
+    });
     const text = await response.text();
     return JSON.parse(text);
 }
@@ -51,7 +59,8 @@ export async function resolveReport(reportId, response) {
     const fetchResponse = await fetch('http://localhost:2048/api/close-report', {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getAdminToken()}`
         },
         body: JSON.stringify(parameters)
     });
@@ -73,9 +82,10 @@ export async function updateApp(month, year, monthsCount) {
     const response = await fetch('http://localhost:2048/api/update-app', {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getAdminToken()}`
         },
         body: JSON.stringify(parameters)
     });
-    return response.status;
+    return response;
 }

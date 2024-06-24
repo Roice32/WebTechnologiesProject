@@ -1,6 +1,6 @@
 import fs from 'fs';
 import connectionPool from '../db_connection.js';
-import { fetchAppProperties } from '../shared.js';
+import { normalize } from 'path';
 
 const datasetTypes = ['medii', 'rate', 'nivele_educatie', 'varste'];
 const queries = new Map([
@@ -76,10 +76,29 @@ function getRidOfQuotes(row) {
     return result;
 }
 
+function normalizeCountyName(county) {
+    if(county.includes('BUC')) {
+        return 'BUCURESTI';
+    }
+    if (county.includes('CARA')) {
+        return 'CARAS-SEVERIN';  
+    }
+    if (county.includes('SATU')) {
+        return 'SATU-MARE';
+    }
+    if (county.includes('BISTR')) {
+        return 'BISTRITA-NASAUD';
+    }
+    if (county.includes('TOTAL')) {
+        return 'Total TARA';
+    }
+    return county;
+}
+
 async function updateTable(table, year, month) {
     const insertOrUpdateQuery = queries.get(table);
     const yearAndMonth = getYearAndMonth(year, month);
-    const datasetPath = `../../data/${table}/${yearAndMonth}.csv`;
+    const datasetPath = `data/${table}/${yearAndMonth}.csv`;
     var rowsModified = 0;
     const dbConnection = await connectionPool.connect();
     try {
@@ -90,9 +109,10 @@ async function updateTable(table, year, month) {
             const values = (table == 'rate' ? getRidOfQuotes(row) : row ).trim().split(',').filter(value => value !== '');
             if (values.length == 0)
                 continue;
-            const adjustedValues = values.slice(0, expectedColumns.get(table));
+            var adjustedValues = values.slice(0, expectedColumns.get(table));
             while (adjustedValues.length < expectedColumns.get(table))
                 adjustedValues.push('0');
+            adjustedValues[0] = normalizeCountyName(values[0].toUpperCase());
             const queryResult = await dbConnection.query(insertOrUpdateQuery, [...adjustedValues, yearAndMonth]);
             if (queryResult.rowCount > 0) {
                 rowsModified++;
@@ -102,28 +122,31 @@ async function updateTable(table, year, month) {
         return `${rowsModified} rows modified successfully in '${table}' table for ${yearAndMonth} dataset.`;
     } catch (error) {
         dbConnection.query('ROLLBACK');
-        console.log(`Eroare la actualizarea tabelului '${table}' cu ${datasetPath}: ${error}`);
+        return `Eroare la actualizarea tabelului '${table}' cu ${datasetPath}: ${error}`;
     } finally {
         dbConnection.release();
     }
 }
 
-async function updateDatabaseFromDatasets() {
-    var { lastStoredYear, lastStoredMonth, monthsToGoBack } = fetchAppProperties();
-    while (monthsToGoBack > 0) {
+async function updateDatabaseFromDatasets(parameters) {
+    var year = Number(parameters.year);
+    var month = Number(parameters.month);
+    var monthsCount = Number(parameters.monthsCount);
+    while (monthsCount > 0) {
         for (const table of datasetTypes) {
-            const result = await updateTable(table, lastStoredYear, lastStoredMonth);
-            if (result.includes('Eroare')) {
+            const result = await updateTable(table, year, month);
+            if (result.startsWith('Eroare')) {
                 return result;
             }
         }
-        lastStoredMonth--;
-        if (lastStoredMonth == 0) {
-            lastStoredMonth = 12;
-            lastStoredYear--;
+        month--;
+        if (month == 0) {
+            month = 12;
+            year--;
         }
-        monthsToGoBack--;
+        monthsCount--;
     }
+    return 'Succes';
 }
 
 export default updateDatabaseFromDatasets;
