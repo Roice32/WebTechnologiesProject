@@ -13,6 +13,7 @@ async function showAdminPanel() {
     await buildAppManagementSection();
     await buildOpenReportsList();
     document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('appUpdateError').style.display = 'none';
     document.getElementById('logoutButton').style.display = 'block';
     document.getElementById('appManagementPanel').style.display = 'block';
     document.getElementById('openReportsPanel').style.display = 'block';
