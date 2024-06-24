@@ -15,7 +15,7 @@ function getStringDate(date) {
 async function reduceData(data) {
     const reducedData = new Map();
     for (const row of data) {
-        const county = row.judet.toString().includes('BUC') ? 'BUCURESTI' : row.judet.trim();
+        const county = row.judet.toString().trim();
         if (!reducedData.has(county)) {
             const newValue = {};
             for (const field in row) {
