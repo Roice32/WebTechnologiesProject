@@ -14,6 +14,9 @@
                 Prezentare proiect:</br>
                 <a href="https://www.youtube.com/watch?v=bfFlV2lPSgQ" alt="Video prezentare proiect">Unemployment Explorer - Prezentare Video</a>
             </h1>
+            <h3>
+                Diagrame C4: în folder-ul <i>docs/c4_diagrams</i>.
+            </h3>
         <h2>Cuprins</h2>
         <ul>
             <li>
