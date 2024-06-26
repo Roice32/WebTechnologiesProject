@@ -14,6 +14,14 @@
                 Prezentare proiect:</br>
                 <a href="https://www.youtube.com/watch?v=bfFlV2lPSgQ" alt="Video prezentare proiect">Unemployment Explorer - Prezentare Video</a>
             </h1>
+            <h1>
+                Page Speed Insights (<i>Lighthouse</i> în Google Chrome):
+            </h1>
+            <h3>
+                În folderul <i>docs/page_speed_insights</i>.<br>
+                Pozele '*Performance.png' reprezintă statistici cu testul default de la Lighthouse.<br>
+                Poza 'VisualizerInteraction.png' reprezintă performanța paginii <i>Vizualizator</i> în cazul de utilizare: 3 luni, pe medii de rezidență, <b>toate</b> județele, ca hartă interactivă + export .svg.
+            </h3>
             <h3>
                 Diagrame C4: în folder-ul <i>docs/c4_diagrams</i>.
             </h3>
